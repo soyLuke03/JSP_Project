@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>
+	pageEncoding="ISO-8859-1"%>
 <%@ page import="com.jacaranda.User.*"%>
+<%@ page import="com.jacaranda.DataAccess.*"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -9,27 +10,36 @@
 </head>
 <body>
 	<%
-		String user = request.getParameter("userName");
+	String user = request.getParameter("userName");
 		String password = request.getParameter("password");
 		String email = request.getParameter("email");
 		String id = request.getParameter("personalId");
 		String name = request.getParameter("name");
 		String address = request.getParameter("address");
 		String phoneNumber = request.getParameter("phoneNumber");
-		
-		User newAccount = new User(name, user, password, address, phoneNumber, id, email);
-		if(newAccount.registerUser() == true) {%>
-			<jsp:forward page="Login.jsp"></jsp:forward>
+
+		if (user != null && password != null && email != null && id != null && name != null && address != null
+		&& phoneNumber != null) {
+			UserDataAccess dao = new UserDataAccess();
+			User newAccount = new User(name, user, password, address, phoneNumber, id, email);
+			try {
+		if(dao.registerUser(newAccount) == 1) {
+	%>
+			<a href="Login.jsp">Volver</a>
 		<%}
+		} catch(UserException e) {
+			out.println(e.getMessage());
+		}
+	}
 	%>
 	<form method="post">
 		User<input type="text" id="userName" name="userName" required>
 		Password<input type="password" id="password" name="password" required>
-		Email<input type="email" id="email" name="email" required>
-		Id<input type="text" id="personalId" name="personalId" required>
-		Name<input type="text" id="name" name="name" required>
-		Address<input type="text" id="address" name="address" required>
-		Phone number<input type="text" id="phoneNumber" name="phoneNumber" required>
+		Email<input type="email" id="email" name="email" required> Id<input
+			type="text" id="personalId" name="personalId" required> Name<input
+			type="text" id="name" name="name" required> Address<input
+			type="text" id="address" name="address" required> Phone
+		number<input type="text" id="phoneNumber" name="phoneNumber" required>
 		<button type="submit">Enviar</button>
 	</form>
 </body>
