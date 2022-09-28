@@ -6,35 +6,58 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>JSP_Project</title>
+<link rel="stylesheet" type="text/css" href="css/loginStyle.css">
 </head>
 <body>
 	<%
-	session.invalidate();
-			String userName = request.getParameter("userName");
-			String password = request.getParameter("password");
-			HttpSession sessionUser = request.getSession();
+		session.invalidate();
+		String userName = request.getParameter("userName");
+		String password = request.getParameter("password");
+		HttpSession sessionUser = request.getSession();
+		String error = "";
 			
-			if(userName != null && password != null) {
-		sessionUser.setAttribute("login", "True");
-		sessionUser.setAttribute("name", userName);
-		UserDataAccess dao = new UserDataAccess();
-		User user = new User(userName, password);
-		try {
-			if(dao.comprobationUser(user) == true) {
-	%>
+		if(userName != null && password != null) {
+			sessionUser.setAttribute("login", "True");
+			sessionUser.setAttribute("name", userName);
+			UserDataAccess dao = new UserDataAccess();
+			User user = new User(userName, password);
+			try {
+				if(dao.comprobationUser(user) == true) {%>
 					<jsp:forward page="Shop.jsp"></jsp:forward>
 				<%}
 			} catch(UserException e) {
-				out.println(e.getMessage());
+				error = e.getMessage();
 			}
 		}
 	%>
-	<form method="post">
-		User<input type="text" id="userName" name="userName">
-		Contraseña<input type="password" id="password" name="password">
-		<button type="submit">Enviar</button>
-	</form>
-	<a href="Register.jsp">Regístrase</a>
+	<article>
+		<div id="container">
+			<div id="title">
+				<h1>JSP_Project</h1>
+			</div>
+			<div id="container_login">
+				<form method="post">
+					<div class="dates">
+						<label for="userName">Username</label>
+						<input type="text" id="userName" name="userName" required>
+					</div>
+					<div class="dates">
+						<label for="password">Password</label>
+						<input type="password" id="password" name="password" required>
+					</div>
+					<div id="error_message">
+						<p class="error"><%=error %></p>
+					</div>
+					<div id="boton">
+						<button type="submit">Sign in</button>
+					</div>
+				</form>
+			</div>
+			<div id="enlace">
+				<a href="Register.jsp">Sign up</a>
+			</div>
+		</div>
+	</article>
 </body>
 </html>
