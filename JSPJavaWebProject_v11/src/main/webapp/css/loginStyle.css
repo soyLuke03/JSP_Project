@@ -1,0 +1,87 @@
+@charset "ISO-8859-1";
+
+body {
+	margin: 0;
+	font-family: sans-serif;
+}
+
+article {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	height: 100vh;
+}
+
+#container {
+	width: 400px;
+	height: 300px;
+	border: 2px solid grey;
+	max-width: 400px;
+	border-radius: 4px;
+}
+
+
+#container > #title {
+	margin: auto;
+	max-width: 160px;
+	margin-top: 30px;
+	margin-bottom: 25px;
+}
+
+#container_login {
+	margin: auto;
+	width: 240px;
+}
+
+.dates {
+	margin: auto;
+	max-width: 200px;
+	text-align: left;
+	padding: 0 0 12px 0;
+	font-size: 15px;
+	margin-bottom: 4px;
+}
+
+.dates > input {
+	width: 190px;
+	border-radius: 4px;
+	border: 1px solid;
+	padding: 6px;
+	background: rgba(255, 255, 255, 0.4);
+}
+
+.dates > input:checked {
+	outline: red;
+}
+
+#boton {
+	display: flex;
+	justify-content: center;
+}
+
+#boton > button {
+	cursor: pointer;
+	border-radius: 5px;
+	width: 200px;
+	padding: 4px;
+	background: #0095f6;
+	font-weight: 600;
+	color: white;
+	border: 1px solid transparent;
+}
+
+#error_message {
+	text-align: center;
+}
+
+.error {
+	color: red;
+	font-size: 12px;
+	margin-top: -8px;
+}
+
+#enlace {
+	display: flex;
+	justify-content: center;
+	margin-top: 15px;
+}
