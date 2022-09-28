@@ -4,18 +4,26 @@ div.header h1{
 	margin: auto;
 }
 
-div.header p{
+div.user p{
 	text-align: right;
 	padding-right: 10%;
 	vertical-align: bottom;
+	font-size: 12px;
 }
 
+div.user{
+	background-color: aqua;
+
+}
+
+
 .header{
-	height: 100px;
+	height: 70px;
 	background-color: red;
 }
 
 .titulo{
+	
 	padding-left: 10%;
 	padding-right: 10%;
 	padding-top: 20px;
@@ -29,7 +37,15 @@ body{
 
 .sidebar{
 	float: left;
-	background-color: blue;
-	width: 15%;
-	position: relative;
+	background-color: rgb(122, 121, 121);
+	width: 90px;
+	text-align: center;
+	padding-left: 16px;
+}
+
+.sidebar p{
+	border-style:inset;
+	border-radius: 5px;
+	background-color: rgb(255, 255, 255);
+	width: 80%;
 }
