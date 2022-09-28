@@ -5,6 +5,7 @@ import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.Objects;
 
 public class User {
 	private String userName;
@@ -14,15 +15,10 @@ public class User {
 	private String phoneNumber;
 	private String id;
 	private String email;
-	private static Connection connection;
-	private static Statement instruction;
-	private static ResultSet result;
-	private static boolean conect;
 
 	public User(String userName, String password) throws SQLException {
 		this.userName = userName;
 		this.password = password;
-		setConnection();
 	}
 
 	public User(String name, String userName, String password, String address, String phoneNumber, String id, String email)
@@ -35,47 +31,85 @@ public class User {
 		this.phoneNumber = phoneNumber;
 		this.id = id;
 		this.email = email;
-		setConnection();
 	}
 
-	private void setConnection() throws SQLException {
-		try {
-			connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/JSP_Project?useSSL=false",
-					"administrador", "administrador");
-			instruction = connection.createStatement();
-			this.conect = true;
-		} catch (SQLException e) {
-			System.out.println(e.getMessage());
-		}
+	public String getUserName() {
+		return userName;
 	}
 
-	public boolean comprobationUser() throws SQLException {
-		boolean exist = false;
-		result = instruction.executeQuery("SELECT * FROM Users WHERE USERNAME = '" + this.userName + "'");
-		result.next();
-		if (result.getString("userName").equals(this.userName) && result.getString("password").equals(this.password)) {
-			exist = true;
-		}
-		return exist;
+	public void setUserName(String userName) {
+		this.userName = userName;
 	}
 
-	public boolean registerUser() throws UserException {
-		boolean created = false;
-		try {
-			result = instruction.executeQuery(
-					"SELECT COUNT(USERNAME) AS numUser FROM Users WHERE USERNAME = '" + this.userName + "'");
-			if (result.getInt("numUser") == 1) {
-				throw new UserException("El usuario ya existe.");
-			} else {
-				result = instruction.executeQuery("INSERT INTO Users VALUES('" + this.name + "', '" + this.userName
-						+ "', '" + this.password + "', '" + this.address + "', '" + this.phoneNumber + "', '"
-						+ this.email + "', '" + this.id + "')");
-				created = true;
-			}
-		} catch (SQLException e) {
-			e.getMessage();
-		}
-		return created;
+	public String getPassword() {
+		return password;
+	}
+
+	public void setPassword(String password) {
+		this.password = password;
+	}
+
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	public String getAddress() {
+		return address;
+	}
+
+	public void setAddress(String address) {
+		this.address = address;
+	}
+
+	public String getPhoneNumber() {
+		return phoneNumber;
+	}
+
+	public void setPhoneNumber(String phoneNumber) {
+		this.phoneNumber = phoneNumber;
+	}
+
+	public String getId() {
+		return id;
+	}
+
+	public void setId(String id) {
+		this.id = id;
+	}
+
+	public String getEmail() {
+		return email;
+	}
+
+	public void setEmail(String email) {
+		this.email = email;
+	}
+
+	@Override
+	public int hashCode() {
+		return Objects.hash(id, userName);
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		User other = (User) obj;
+		return Objects.equals(id, other.id) && Objects.equals(userName, other.userName);
+	}
+
+	@Override
+	public String toString() {
+		return "User [userName=" + userName + ", password=" + password + ", name=" + name + ", address=" + address
+				+ ", phoneNumber=" + phoneNumber + ", id=" + id + ", email=" + email + "]";
 	}
 
 }
