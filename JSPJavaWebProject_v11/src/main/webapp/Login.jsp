@@ -23,9 +23,9 @@
 			UserDataAccess dao = new UserDataAccess();
 			User user = new User(userName, password);
 			try {
-				if(dao.comprobationUser(user) == true) {%>
-					<jsp:forward page="Shop.jsp"></jsp:forward>
-				<%}
+				if(dao.comprobationUser(user) == true) {
+					response.sendRedirect("http://localhost:8080/JSP_Project/Shop.jsp");
+				}
 			} catch(UserException e) {
 				error = e.getMessage();
 			}
@@ -40,11 +40,11 @@
 				<form method="post">
 					<div class="dates">
 						<label for="userName">Username</label>
-						<input type="text" id="userName" name="userName" required>
+						<input type="text" id="userName" name="userName" maxlength="30" required>
 					</div>
 					<div class="dates">
 						<label for="password">Password</label>
-						<input type="password" id="password" name="password" required>
+						<input type="password" id="password" name="password" maxlength="30" required>
 					</div>
 					<div id="error_message">
 						<p class="error"><%=error %></p>
