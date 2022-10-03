@@ -1,5 +1,6 @@
 package com.jacaranda.DataAccess;
 
+import com.jacaranda.Item.Item;
 import com.jacaranda.User.*;
 import java.sql.Connection;
 
@@ -51,6 +52,24 @@ public class UserDataAccess {
 				created = instruction.executeUpdate("INSERT INTO Users VALUES('" + user.getName() + "', '" + user.getUserName()
 						+ "', '" + user.getPassword() + "', '" + user.getAddress() + "', '" + user.getPhoneNumber() + "', '"
 						+ user.getEmail() + "', '" + user.getId() + "')");
+			}
+		} catch (SQLException e) {
+			e.getMessage();
+		}
+		return created;
+	}
+	
+	public int registerItem(Item item) throws UserException {
+		int created = 0;
+		try {
+			result = instruction.executeQuery(
+					"SELECT COUNT(USERNAME) AS numUser FROM Users WHERE USERNAME = '" + item.getNameItem() + "'");
+			result.next();
+			if (result.getInt("numUser") == 1) {
+				throw new UserException("El usuario ya existe.");
+			} else {
+				created = instruction.executeUpdate("INSERT INTO Item VALUES('" + item.getNameItem() + "', '" + item.getPriceItem()
+						+ "', '" + item.getStockItem() + "', '" + item.getCategory() + "'");
 			}
 		} catch (SQLException e) {
 			e.getMessage();
