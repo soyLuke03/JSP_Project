@@ -1,14 +1,12 @@
 .register-body{
-    background-color: white;
+    background-color: black;
     padding-top: 15%;
     text-align: center;
 }
 
-
-
 .container{
-    background-color: rgb(0, 242, 255);
-    width: 80%;
+    background-color: aqua;
+    width: 50%;
     text-align: center;
     margin:0px auto;
     border-style: inset;
@@ -16,15 +14,15 @@
 }
 
 #borde{
-    background-color: rgb(0, 217, 255);
+    background-color: aquamarine;
     margin:0px auto;
-    width: 50%;
+    width: 90%;
     border-style: inset;
     border-radius: 100px;
 }
 
 body{
-    background-color: rgb(255, 255, 255);
+    background-color: black;
 }
 
 button {

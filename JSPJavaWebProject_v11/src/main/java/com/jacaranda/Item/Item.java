@@ -48,7 +48,7 @@ public class Item {
 				throw new ItemException("[ERROR 0-22] The item´s price is out of range or is not valid.");
 			}
 			
-//			this.idItem += 1;
+			this.idItem += 1;
 		}
 	}
 	
@@ -110,56 +110,6 @@ public class Item {
 	public String toString() {
 		return "Item [idItem=" + idItem + ", nameItem=" + nameItem + ", priceItem=" + priceItem + ", stockItem="
 				+ stockItem + ", category=" + category + "]";
-	}
-
-
-	public Integer getIdItem() {
-		return idItem;
-	}
-
-
-	public void setIdItem(Integer idItem) {
-		this.idItem = idItem;
-	}
-
-
-	public String getNameItem() {
-		return nameItem;
-	}
-
-
-	public void setNameItem(String nameItem) {
-		this.nameItem = nameItem;
-	}
-
-
-	public Double getPriceItem() {
-		return priceItem;
-	}
-
-
-	public void setPriceItem(Double priceItem) {
-		this.priceItem = priceItem;
-	}
-
-
-	public Integer getStockItem() {
-		return stockItem;
-	}
-
-
-	public void setStockItem(Integer stockItem) {
-		this.stockItem = stockItem;
-	}
-
-
-	public Category getCategory() {
-		return category;
-	}
-
-
-	public void setCategory(Category category) {
-		this.category = category;
 	}
 
 
