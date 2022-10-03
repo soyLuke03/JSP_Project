@@ -1,39 +1,14 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-	pageEncoding="ISO-8859-1"%>
-<%@ page import="com.jacaranda.User.*"%>
-<%@ page import="com.jacaranda.DataAccess.*"%>
+
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Register</title>
 <link rel="stylesheet" href="css/cssRegister.css">
+<title>Insert title here</title>
 </head>
 <body>
-	<%
-	String user = request.getParameter("userName");
-		String password = request.getParameter("password");
-		String email = request.getParameter("email");
-		String id = request.getParameter("personalId");
-		String name = request.getParameter("name");
-		String address = request.getParameter("address");
-		String phoneNumber = request.getParameter("phoneNumber");
 
-		if (user != null && password != null && email != null && id != null && name != null && address != null
-		&& phoneNumber != null) {
-			UserDataAccess dao = new UserDataAccess();
-			User newAccount = new User(name, user, password, address, phoneNumber, id, email);
-			try {
-		if(dao.registerUser(newAccount) == 1) {
-	%>
-			<a href="Login.jsp">Volver</a>
-		<%}
-		} catch(UserException e) {
-			out.println(e.getMessage());
-		}
-	}
-	%>
-		<form method="post">
+	<form method="post">
 		
         <div class="register-body">
 
@@ -76,7 +51,7 @@
                     <br>
 
                     <label>Phone number</label>
-                    <input type="text" id="phoneNumber" name="phoneNumber">
+                    <input type="text" id="phoneNumber" name="phoneNumber" required>
                     
                     <br>
                     <br>
