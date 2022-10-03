@@ -34,7 +34,7 @@ public class UserDataAccess {
 		if ((result.getRow() != 0) && (result.getString("userName").equals(user.getUserName()) && result.getString("password").equals(user.getPassword()))) {
 			exist = true;
 		} else {
-			throw new UserException("User or password don't exist.");
+			throw new UserException("El usuario o la contraseña no son correctas.");
 		}
 		return exist;
 	}
