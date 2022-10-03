@@ -5,8 +5,8 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="ISO-8859-1">
-<title>Insert title here</title>
+<meta charset="UTF-8">
+<title>Register</title>
 <link rel="stylesheet" href="css/cssRegister.css">
 </head>
 <body>
@@ -76,7 +76,7 @@
                     <br>
 
                     <label>Phone number</label>
-                    <input type="text" id="phoneNumber" name="phoneNumber" required>
+                    <input type="text" id="phoneNumber" name="phoneNumber">
                     
                     <br>
                     <br>

@@ -1,5 +1,6 @@
 package com.jacaranda.DataAccess;
 
+import com.jacaranda.Item.Item;
 import com.jacaranda.User.*;
 import java.sql.Connection;
 
@@ -29,12 +30,12 @@ public class UserDataAccess {
 	
 	public boolean comprobationUser(User user) throws SQLException, UserException {
 		boolean exist = false;
-		result = instruction.executeQuery("SELECT * FROM Users WHERE USERNAME = '" + user.getUserName() + "'");
+		result = instruction.executeQuery("SELECT * FROM Users WHERE userName = " + user.getUserName().toString());
 		result.next();
-		if ((result.getRow() != 0) && (result.getString("userName").equals(user.getUserName()) && result.getString("password").equals(user.getPassword()))) {
+		if ((result.getRow() != 0) && (result.getString("userName").equals(user.getUserName()) && result.getString("passWord").equals(user.getPassword()))) {
 			exist = true;
 		} else {
-			throw new UserException("User or password don't exist.");
+			throw new UserException("El usuario o la contraseña no son correctas.");
 		}
 		return exist;
 	}
@@ -51,6 +52,24 @@ public class UserDataAccess {
 				created = instruction.executeUpdate("INSERT INTO Users VALUES('" + user.getName() + "', '" + user.getUserName()
 						+ "', '" + user.getPassword() + "', '" + user.getAddress() + "', '" + user.getPhoneNumber() + "', '"
 						+ user.getEmail() + "', '" + user.getId() + "')");
+			}
+		} catch (SQLException e) {
+			e.getMessage();
+		}
+		return created;
+	}
+	
+	public int registerItem(Item item) throws UserException {
+		int created = 0;
+		try {
+			result = instruction.executeQuery(
+					"SELECT COUNT(USERNAME) AS numUser FROM Users WHERE USERNAME = '" + item.getNameItem() + "'");
+			result.next();
+			if (result.getInt("numUser") == 1) {
+				throw new UserException("El usuario ya existe.");
+			} else {
+				created = instruction.executeUpdate("INSERT INTO Item VALUES('" + item.getNameItem() + "', '" + item.getPriceItem()
+						+ "', '" + item.getStockItem() + "', '" + item.getCategory() + "'");
 			}
 		} catch (SQLException e) {
 			e.getMessage();
