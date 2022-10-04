@@ -7,7 +7,7 @@
 <head>
 <meta charset="UTF-8">
 <title>JSP_Project</title>
-<link rel="stylesheet" type="text/css" href="css/loginStyle.css">
+<link rel="stylesheet" type="text/css" href="css/index.css">
 </head>
 <body>
 	<%
@@ -24,7 +24,7 @@
 			User user = new User(userName, password);
 			try {
 				if(dao.comprobationUser(user) == true) {
-					response.sendRedirect("http://localhost:8080/JSP_Project/Shop.jsp");
+					response.sendRedirect("Shop.jsp");
 				}
 			} catch(UserException e) {
 				error = e.getMessage();

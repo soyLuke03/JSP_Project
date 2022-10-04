@@ -23,11 +23,18 @@
 		&& phoneNumber != null) {
 			UserDataAccess dao = new UserDataAccess();
 			User newAccount = new User(name, user, password, address, phoneNumber, id, email);
+<<<<<<< HEAD
 			try {
 		if(dao.registerUser(newAccount) == 1) {
 	
 			response.sendRedirect("index.jsp");
 		}
+=======
+		try {
+			if(dao.registerUser(newAccount) == 1) {
+				response.sendRedirect("index.jsp");
+			}
+>>>>>>> Florian
 		} catch(UserException e) {
 			out.println(e.getMessage());
 		}
