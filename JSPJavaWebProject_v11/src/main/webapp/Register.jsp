@@ -25,9 +25,9 @@
 			User newAccount = new User(name, user, password, address, phoneNumber, id, email);
 			try {
 		if(dao.registerUser(newAccount) == 1) {
-	%>
-			<a href="Login.jsp">Volver</a>
-		<%}
+	
+			response.sendRedirect("index.jsp");
+		}
 		} catch(UserException e) {
 			out.println(e.getMessage());
 		}

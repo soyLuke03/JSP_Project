@@ -38,13 +38,18 @@
                   <p><a href="#Other"> Other</a></p> 
                 </div>
               </li>
+              
               <li id="seccion2"  onmouseover="ver(2)" onmouseout="ocultar(2)">
-                <a href="#">Shopping Cart <i class="material-icons">shopping_cart</i></a>			
+                <a href="#ShoppingCart">Shopping Cart <i class="material-icons">shopping_cart</i></a>			
+              </li>
+              
+              <li id="seccion3"  onmouseover="ver(3)" onmouseout="ocultar(3)">
+                <a href="ItemRegister.jsp">Willing to sell? <i class="material-icons">sell</i></a>			
               </li>
               
               
               <div align="right">
-              <p id="apartado"><a href="xxx">Log Out</a></p>
+              <p id="apartado"><a href="index.jsp">Log Out</a></p>
               </div>
             </ul>
             <div class="borrar"></div>
