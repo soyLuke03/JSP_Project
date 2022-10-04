@@ -59,22 +59,18 @@ public class UserDataAccess {
 		return created;
 	}
 	
-	public int modUser(User user) throws UserException{
+	public int modUser(String name, String userName, String passWord, String address, String phone, String email, String oldUser) throws UserException{
 		int modified = 0;
 		try {
-			result = instruction.executeQuery(
-					"SELECT COUNT(USERNAME) AS numUser FROM Users WHERE USERNAME = '" + user.getUserName() + "'");
-			result.next();
-			if (result.getInt("numUser") == 0) {
-				throw new UserException("El usuario no existe.");
-			} else {
-				modified = instruction.executeUpdate("Update Users set name='" + user.getName() + "', userName='" + user.getUserName()
-						+ "', passWord='" + user.getPassword() + "', address='" + user.getAddress() + "', phoneNumber='" + user.getPhoneNumber() + "', email='"
-						+ user.getEmail() + "', id'" + user.getId() + " where userName='" + user.getUserName() + "'");
+				
+				modified = instruction.executeUpdate("Update Users set name='"+userName+"',userName='"+userName
+						+ "', passWord='" + passWord + "', address='" + address + "', phoneNumber='" + phone + "', email='"
+						+ email +
+						"' where userName='" + oldUser + "'");
+				
+			}catch (Exception e) {
+				// TODO: handle exception
 			}
-		} catch (SQLException e) {
-			e.getMessage();
-		}
 		return modified;
 	}
 	
