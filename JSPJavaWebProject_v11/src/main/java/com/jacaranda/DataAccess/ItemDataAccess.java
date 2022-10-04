@@ -6,9 +6,9 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.LinkedList;
-import java.util.Locale.Category;
 
 import com.jacaranda.Item.Item;
+import com.jacaranda.Item.ItemException;
 
 public class ItemDataAccess {
 	private static Connection connection;
@@ -19,6 +19,7 @@ public class ItemDataAccess {
 	public ItemDataAccess() throws SQLException {
 		itemsList = new LinkedList<Item>();
 		setConnection();
+		getDbItems();
 	}
 	
 	private void setConnection() throws SQLException {
@@ -31,7 +32,7 @@ public class ItemDataAccess {
 		}
 	}
 	
-	public void getDbItems() {
+	private void getDbItems() {
 		try {
 			result = instruction.executeQuery("SELECT * FROM Item");
 			while(result.next()) {
@@ -40,7 +41,11 @@ public class ItemDataAccess {
 				itemsList.add(item);
 			}
 		} catch (SQLException e) {
-			e.getMessage();
+			throw new ItemException("Ha ocurrido un error inesperado.");
 		}
+	}
+	
+	public void insertItem(String nameItem, Double priceItem, int stock, String category) {
+		
 	}
 }
