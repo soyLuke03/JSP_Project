@@ -59,22 +59,23 @@ public class UserDataAccess {
 		return created;
 	}
 	
-	public int registerItem(Item item) throws UserException {
-		int created = 0;
+	public int modUser(User user) throws UserException{
+		int modified = 0;
 		try {
 			result = instruction.executeQuery(
-					"SELECT COUNT(USERNAME) AS numUser FROM Users WHERE USERNAME = '" + item.getNameItem() + "'");
+					"SELECT COUNT(USERNAME) AS numUser FROM Users WHERE USERNAME = '" + user.getUserName() + "'");
 			result.next();
-			if (result.getInt("numUser") == 1) {
-				throw new UserException("El usuario ya existe.");
+			if (result.getInt("numUser") == 0) {
+				throw new UserException("El usuario no existe.");
 			} else {
-				created = instruction.executeUpdate("INSERT INTO Item VALUES('" + item.getNameItem() + "', '" + item.getPriceItem()
-						+ "', '" + item.getStockItem() + "', '" + item.getCategory() + "'");
+				modified = instruction.executeUpdate("Update Users set name='" + user.getName() + "', userName='" + user.getUserName()
+						+ "', passWord='" + user.getPassword() + "', address='" + user.getAddress() + "', phoneNumber='" + user.getPhoneNumber() + "', email='"
+						+ user.getEmail() + "', id'" + user.getId() + " where userName='" + user.getUserName() + "'");
 			}
 		} catch (SQLException e) {
 			e.getMessage();
 		}
-		return created;
+		return modified;
 	}
 	
 }
