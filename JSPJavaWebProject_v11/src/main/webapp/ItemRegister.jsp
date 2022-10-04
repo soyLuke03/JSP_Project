@@ -21,7 +21,11 @@
 
 		if (itemName != null && itemPrice != null && itemStock != null && itemCategory != null) {
 			UserDataAccess dao = new UserDataAccess();
-			Item newItem = new Item( String.valueOf(itemName), Double.valueOf(itemPrice), Category.valueOf(itemCategory));
+			Item newItem = new Item( String.valueOf(itemName), Double.valueOf(itemPrice),Integer.valueOf(itemStock) , Category.valueOf(itemCategory));
+			
+			UserDataAccess Uda = new UserDataAccess();
+			Uda.registerItem(newItem);
+			
 			try {
 		if(dao.registerItem(newItem) == 1) {
 	%>
@@ -32,7 +36,7 @@
 		}
 	}
 	%>
-		<form method="post">
+		<form method="post" action="ItemRegister.jsp">
 		
         <div class="register-body">
 

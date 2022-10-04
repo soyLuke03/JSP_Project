@@ -7,7 +7,7 @@
 <head>
 <meta charset="UTF-8">
 <title>JSP_Project</title>
-<link rel="stylesheet" type="text/css" href="css/index.css">
+<link rel="stylesheet" type="text/css" href="css/loginStyle.css">
 </head>
 <body>
 	<%

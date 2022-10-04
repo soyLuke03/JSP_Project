@@ -49,6 +49,9 @@
               
               
               <div align="right">
+              <p id="apartado"><a href="UserSettings.jsp">User Settings</a></p>
+              </div>
+              <div align="right">
               <p id="apartado"><a href="index.jsp">Log Out</a></p>
               </div>
             </ul>
@@ -159,6 +162,12 @@
 	    	</div>
          </form>
          
+         
+         <br>
+         <div align="center">
+         	<button id="return"><a href="#navegador">Return to the header</a></button>
+         </div>
+         <br>
          <!-- Shopping cart -->
          
         <div align="center" id="shopping_cart">

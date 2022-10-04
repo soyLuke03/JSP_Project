@@ -134,3 +134,16 @@ img{
 	height: 100px;
 	width: 100px;
 }
+
+div#shopping_cart{
+	background-color: #368600e0;
+	padding-top: 5%;
+}
+
+
+
+table{
+	background-color: #fff700;
+	width: 60%;
+	font-size: large;
+}
