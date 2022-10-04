@@ -40,7 +40,7 @@
               </li>
               
               <li id="seccion2"  onmouseover="ver(2)" onmouseout="ocultar(2)">
-                <a href="#ShoppingCart">Shopping Cart <i class="material-icons">shopping_cart</i></a>			
+                <a href="#shopping_cart">Shopping Cart <i class="material-icons">shopping_cart</i></a>			
               </li>
               
               <li id="seccion3"  onmouseover="ver(3)" onmouseout="ocultar(3)">
@@ -62,80 +62,94 @@
 
                     
                     <div class="content-body">
-                        <div class="content-1">
-                            <p id="apartado" name="Food">Food</p>
+                        <div class="content-1" id="Food">
+                            <p id="apartado" name="Food" >Food</p>
                             <div class="contenido">
                                 
                                 <p>Esto es un objeto</p>
                                 <input type="number" name="amount" placeholder="Amount"><button onclick="XXX()">Add to cart</button>
-                                
-                                <p>Esto es un objeto</p>
-                                <input type="number" name="amount" placeholder="Amount"><button onclick="XXX()">Add to cart</button>
-                                
-                                <p>Esto es un objeto</p>
-                                <input type="number" name="amount" placeholder="Amount"><button onclick="XXX()">Add to cart</button>
-                                
+
                             </div>
                         </div>
                         
                         
-                        <div class="content-2">
+                        <div class="content-2" id="Drinks">
                             <p id="apartado" name="Drinks">Drinks</p>
                             <div class="contenido">
 
+								<p>Esto es un objeto</p>
+                                <input type="number" name="amount" placeholder="Amount"><button onclick="XXX()">Add to cart</button>
 
                             </div>
                         </div>
                         
-                        <div class="content-3">
+                        <div class="content-3" id="Furniture">
                             <p id="apartado"  name="Furniture">Furniture</p>
                             <div class="contenido">
 
+								<p>Esto es un objeto</p>
+                                <input type="number" name="amount" placeholder="Amount"><button onclick="XXX()">Add to cart</button>
 
                             </div>
                         </div>
                         
-                        <div class="content-4">
+                        <div class="content-4" id="Materials">
                             <p  id="apartado" name="Materials">Materials</p>
                             <div class="contenido">
 
+								<p>Esto es un objeto</p>
+                                <input type="number" name="amount" placeholder="Amount"><button onclick="XXX()">Add to cart</button>
+
 
                             </div>
                         </div>
                         
-                        <div class="content-5">
+                        <div class="content-5" id="Transport">
                             <p  id="apartado" name="Transport">Transport</p>
                             <div class="contenido">
 
+								<p>Esto es un objeto</p>
+                                <input type="number" name="amount" placeholder="Amount"><button onclick="XXX()">Add to cart</button>
+
                             </div>
                         </div>
                         
-                        <div class="content-6">
+                        <div class="content-6" id="Machinery">
                             <p  id="apartado" name="Machinery">Machinery</p>
                             <div class="contenido">
 
+								<p>Esto es un objeto</p>
+                                <input type="number" name="amount" placeholder="Amount"><button onclick="XXX()">Add to cart</button>
+
                             </div>
                         </div>
                         
-                        <div class="content-7">
+                        <div class="content-7" id="Energy">
                             <p  id="apartado" name="Energy">Energy</p>
                             <div class="contenido">
 
+								<p>Esto es un objeto</p>
+                                <input type="number" name="amount" placeholder="Amount"><button onclick="XXX()">Add to cart</button>
+
                             </div>
                         </div>
                         
-                        <div class="content-8">
+                        <div class="content-8" id="Appliances">
                             <p  id="apartado" name="Appliances">Appliances</p>
                             <div class="contenido">
 
+								<p>Esto es un objeto</p>
+                                <input type="number" name="amount" placeholder="Amount"><button onclick="XXX()">Add to cart</button>
 
                             </div>
                         </div>
                         
-                        <div class="content-9">
+                        <div class="content-9" id="Other">
                             <p id="apartado"  name="Other">Other</p>
                             <div class="contenido">
 
+								<p>Esto es un objeto</p>
+                                <input type="number" name="amount" placeholder="Amount"><button onclick="XXX()">Add to cart</button>
 
                             </div>
 
@@ -144,6 +158,24 @@
                 </div>
 	    	</div>
          </form>
+         
+         <!-- Shopping cart -->
+         
+        <div align="center" id="shopping_cart">
+            <h1>Shopping List</h1>
+            <table border="2" id="shopping_list">
+                <tbody id="shopping_list_body">
+                    <tr>
+                        <td>Item ID</td>
+                        <td>Item Name</td>
+                        <td>Item Price</td>
+                        <td>Item Amount</td>
+                        <td>Item Category</td>
+                    </tr>
+                    
+                </tbody>
+            </table>
+        </div>
         
 
         <script src="jsScripts/script.js"></script>
