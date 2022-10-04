@@ -33,7 +33,7 @@ public class Item {
 	 */
 	
 
-	public Item(String nameItem, Double priceItem) throws ItemException{
+	public Item(String nameItem, Double priceItem, String category) throws ItemException{
 		boolean canBe = false;
 		while(canBe == false) {
 			if(nameItem != null && nameItem.length()<30 && nameItem.isBlank() == false) {
@@ -51,6 +51,10 @@ public class Item {
 				throw new ItemException("[ERROR 0-22] The item�s price is out of range or is not valid.");
 			}
 			
+			if(category != null) {
+				this.category = Category.valueOf(category);
+			}
+			
 			Item.idItem += 1;
 		}
 	}
@@ -62,7 +66,7 @@ public class Item {
 	 * @param category
 	 * @throws ItemException
 	 */
-		public Item(String nameItem, double priceItem, String category) throws ItemException{
+		public Item(String nameItem, Double priceItem, int stock, String category) throws ItemException{
 			boolean canBe = false;
 			while(canBe == false) {
 				if(nameItem != null && nameItem.length()<30 && nameItem.isBlank() == false) {
@@ -73,11 +77,17 @@ public class Item {
 				}
 				
 				if(priceItem > 0 && priceItem < 999999) {
-					canBe = true;
 					this.priceItem = priceItem;
 				}
 				else {
 					throw new ItemException("[ERROR 0-22] The item�s price is out of range or is not valid.");
+				}
+				
+				if(stock > 0 && stock < 99999) {
+					canBe = true;
+					this.stockItem = stock;
+				} else {
+					throw new ItemException("[ERROR 0-23] The item�s stock is out of range or is not valid.");
 				}
 				
 				if(category != null) {
