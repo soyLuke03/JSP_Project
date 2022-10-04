@@ -30,6 +30,7 @@
 		&& phoneNumber != null) {
 			UserDataAccess dao = new UserDataAccess();
 			User newAccount = new User(name, user, password, address, phoneNumber, id, email);
+			
 			try {
 		if(dao.registerUser(newAccount) == 1) {
 		
