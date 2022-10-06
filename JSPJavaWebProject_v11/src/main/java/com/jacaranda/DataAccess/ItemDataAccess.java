@@ -5,8 +5,10 @@ import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
 import java.util.LinkedList;
 
+import com.jacaranda.Item.Category;
 import com.jacaranda.Item.Item;
 import com.jacaranda.Item.ItemException;
 
@@ -43,6 +45,20 @@ public class ItemDataAccess {
 		} catch (SQLException e) {
 			throw new ItemException("Ha ocurrido un error inesperado.");
 		}
+	}
+	
+	public ArrayList<Item> getItemList(Category category) {
+		ArrayList<Item> itemArray = new ArrayList<>();
+		try {
+			result = instruction.executeQuery("SELECT * FROM Item where CATEGORY ='"+category+"';");
+			while(result.next()) {
+				Item item = new Item(result.getString("nameItem"), result.getDouble("priceItem"), result.getString("category"));
+				itemArray.add(item);
+			}
+		} catch (SQLException e) {
+			throw new ItemException("Ha ocurrido un error inesperado.");
+		}
+		return itemArray;
 	}
 	
 	public void insertItem(String nameItem, Double priceItem, int stock, String category) {
