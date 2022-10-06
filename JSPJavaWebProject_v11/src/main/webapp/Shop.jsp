@@ -1,3 +1,6 @@
+<%@page import="com.jacaranda.DataAccess.ItemDataAccess"%>
+<%@page import="com.jacaranda.Item.*"%>
+<%@page import="java.util.ArrayList"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html>
@@ -12,6 +15,23 @@
 		<title>Name of Shop</title>
     </head>
 	<body>
+	
+	
+	
+		<% 
+		ItemDataAccess ida = new ItemDataAccess();
+		
+		ArrayList<Item> drinks = ida.getItemList(Category.Drinks);
+		ArrayList<Item> energy = ida.getItemList(Category.Energy);
+		ArrayList<Item> appliances = ida.getItemList(Category.Appliances);
+		ArrayList<Item> food = ida.getItemList(Category.Food);
+		ArrayList<Item> furniture = ida.getItemList(Category.Furniture);
+		ArrayList<Item> machinery = ida.getItemList(Category.Machinery);
+		ArrayList<Item> materials = ida.getItemList(Category.Materials);
+		ArrayList<Item> other = ida.getItemList(Category.Other);
+		ArrayList<Item> transport = ida.getItemList(Category.Transport);
+			
+		%>
 	
 
 	
@@ -69,7 +89,7 @@
                             <p id="apartado" name="Food" >Food</p>
                             <div class="contenido">
                                 
-                                <p>Esto es un objeto</p>
+                                <p><%= food %></p>
                                 <input type="number" name="amount" placeholder="Amount"><button onclick="XXX()">Add to cart</button>
 
                             </div>
@@ -80,7 +100,7 @@
                             <p id="apartado" name="Drinks">Drinks</p>
                             <div class="contenido">
 
-								<p>Esto es un objeto</p>
+								<p><%= drinks %></p>
                                 <input type="number" name="amount" placeholder="Amount"><button onclick="XXX()">Add to cart</button>
 
                             </div>
@@ -90,7 +110,7 @@
                             <p id="apartado"  name="Furniture">Furniture</p>
                             <div class="contenido">
 
-								<p>Esto es un objeto</p>
+								<p><%= furniture %></p>
                                 <input type="number" name="amount" placeholder="Amount"><button onclick="XXX()">Add to cart</button>
 
                             </div>
@@ -100,7 +120,7 @@
                             <p  id="apartado" name="Materials">Materials</p>
                             <div class="contenido">
 
-								<p>Esto es un objeto</p>
+								<p><%= materials %></p>
                                 <input type="number" name="amount" placeholder="Amount"><button onclick="XXX()">Add to cart</button>
 
 
@@ -111,7 +131,7 @@
                             <p  id="apartado" name="Transport">Transport</p>
                             <div class="contenido">
 
-								<p>Esto es un objeto</p>
+								<p><%= transport %></p>
                                 <input type="number" name="amount" placeholder="Amount"><button onclick="XXX()">Add to cart</button>
 
                             </div>
@@ -121,7 +141,7 @@
                             <p  id="apartado" name="Machinery">Machinery</p>
                             <div class="contenido">
 
-								<p>Esto es un objeto</p>
+								<p><%= machinery %></p>
                                 <input type="number" name="amount" placeholder="Amount"><button onclick="XXX()">Add to cart</button>
 
                             </div>
@@ -131,7 +151,7 @@
                             <p  id="apartado" name="Energy">Energy</p>
                             <div class="contenido">
 
-								<p>Esto es un objeto</p>
+								<p><%= energy %></p>
                                 <input type="number" name="amount" placeholder="Amount"><button onclick="XXX()">Add to cart</button>
 
                             </div>
@@ -141,7 +161,7 @@
                             <p  id="apartado" name="Appliances">Appliances</p>
                             <div class="contenido">
 
-								<p>Esto es un objeto</p>
+								<p><%= appliances %></p>
                                 <input type="number" name="amount" placeholder="Amount"><button onclick="XXX()">Add to cart</button>
 
                             </div>
@@ -151,7 +171,7 @@
                             <p id="apartado"  name="Other">Other</p>
                             <div class="contenido">
 
-								<p>Esto es un objeto</p>
+								<p><%= other %></p>
                                 <input type="number" name="amount" placeholder="Amount"><button onclick="XXX()">Add to cart</button>
 
                             </div>
