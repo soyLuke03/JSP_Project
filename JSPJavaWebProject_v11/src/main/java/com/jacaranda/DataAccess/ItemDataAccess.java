@@ -62,6 +62,25 @@ public class ItemDataAccess {
 	}
 	
 	public void insertItem(String nameItem, Double priceItem, int stock, String category) {
-		
+		try {
+			result = instruction.executeQuery("insert into Item (nameItem, priceItem, stockItem, category) values ('"+nameItem+"','"+priceItem+"','"+stock+"','"+category+"')");
+			
+			}
+		catch (SQLException e) {
+			throw new ItemException("Ha ocurrido un error inesperado.");
+		}
+	}
+	
+	public void insertItem(Item item) {
+		try {
+			result = instruction.executeQuery("insert into Item (nameItem, priceItem, stockItem, category) values ('"
+		+item.getNameItem()+"','"+item.getPriceItem()+"','"+item.getStockItem()+"','"+item.getCategory()+"')");
+			
+			}
+		catch (SQLException e) {
+			throw new ItemException("Ha ocurrido un error inesperado.");
+		}
 	}
 }
+
+
