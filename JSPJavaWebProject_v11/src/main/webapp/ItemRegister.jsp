@@ -21,20 +21,12 @@
 
 		if (itemName != null && itemPrice != null && itemStock != null && itemCategory != null) {
 			UserDataAccess dao = new UserDataAccess();
-			Item newItem = new Item( String.valueOf(itemName), Double.valueOf(itemPrice),Integer.valueOf(itemStock) , Category.valueOf(itemCategory));
+			Item newItem = new Item(itemName, Double.valueOf(itemPrice), Integer.valueOf(itemStock), itemCategory);
 			
-			UserDataAccess Uda = new UserDataAccess();
-			Uda.registerItem(newItem);
-			
-			try {
-		if(dao.registerItem(newItem) == 1) {
-	%>
-			<a href="Shop.jsp">Volver</a>
-		<%}
-		} catch(UserException e) {
-			out.println(e.getMessage());
+			ItemDataAccess ida = new ItemDataAccess();
+			ida.insertItem(newItem);
 		}
-	}
+			
 	%>
 		<form method="post" action="ItemRegister.jsp">
 		
