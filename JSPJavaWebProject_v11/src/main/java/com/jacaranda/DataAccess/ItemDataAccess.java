@@ -52,7 +52,7 @@ public class ItemDataAccess {
 		try {
 			result = instruction.executeQuery("SELECT * FROM Item where CATEGORY ='"+category+"';");
 			while(result.next()) {
-				Item item = new Item(result.getString("nameItem"), result.getDouble("priceItem"), result.getString("category"));
+				Item item = new Item(result.getString("nameItem"), result.getDouble("priceItem"),result.getInt("stockItem"), result.getString("category"));
 				itemArray.add(item);
 			}
 		} catch (SQLException e) {
@@ -74,7 +74,7 @@ public class ItemDataAccess {
 	public void insertItem(Item item) {
 		try {
 			result = instruction.executeQuery("insert into Item (nameItem, priceItem, stockItem, category) values ('"
-		+item.getNameItem()+"','"+item.getPriceItem()+"','"+item.getStockItem()+"','"+item.getCategory()+"')");
+		+item.getNameItem()+"',"+item.getPriceItem()+","+item.getStockItem()+",'"+item.getCategory()+"')");
 			
 			}
 		catch (SQLException e) {

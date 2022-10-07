@@ -2,6 +2,7 @@ package com.jacaranda.DataAccess;
 
 import java.sql.SQLException;
 
+import com.jacaranda.Item.Category;
 import com.jacaranda.User.User;
 import com.jacaranda.User.UserException;
 
@@ -11,17 +12,12 @@ public class main {
 		// TODO Auto-generated method stub
 
 		try {
-			UserDataAccess uda = new UserDataAccess();
-			User u = new User("IamLuke","QwErTy_03");
-			uda.comprobationUser(u);
+			ItemDataAccess ida = new ItemDataAccess();
 			
-			
+			ida.getItemList(Category.Appliances);
 			
 		} catch (SQLException e) {
 			
-			e.printStackTrace();
-		} catch (UserException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		

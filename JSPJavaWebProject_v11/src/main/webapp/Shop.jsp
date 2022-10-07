@@ -30,6 +30,8 @@
 		ArrayList<Item> materials = ida.getItemList(Category.Materials);
 		ArrayList<Item> other = ida.getItemList(Category.Other);
 		ArrayList<Item> transport = ida.getItemList(Category.Transport);
+		
+		int id_ = 0;
 			
 		%>
 	
@@ -88,9 +90,19 @@
                         <div class="content-1" id="Food">
                             <p id="apartado" name="Food" >Food</p>
                             <div class="contenido">
-                                
-                                <p><%= food %></p>
-                                <input type="number" name="amount" placeholder="Amount"><button onclick="XXX()">Add to cart</button>
+                                <p>
+								<%
+								for (int i =0;i<food.size();i++){
+								%>
+									<p id=<%id_ %>><%= food.get(i) %></p>
+									<button onclick="addToCart()">Add to cart</button>
+									
+									
+								<%
+								id_++;
+								}
+								%>
+								 </p>
 
                             </div>
                         </div>
@@ -100,8 +112,17 @@
                             <p id="apartado" name="Drinks">Drinks</p>
                             <div class="contenido">
 
-								<p><%= drinks %></p>
-                                <input type="number" name="amount" placeholder="Amount"><button onclick="XXX()">Add to cart</button>
+								<p>
+								<%
+								for (int i =0;i<drinks.size();i++){
+								%>
+									<p id=<%id_ %>><%= drinks.get(i) %></p>
+									<button onclick="addToCart()">Add to cart</button>
+								<%
+								id_++;
+								}
+								%>
+								 </p>
 
                             </div>
                         </div>
@@ -109,9 +130,17 @@
                         <div class="content-3" id="Furniture">
                             <p id="apartado"  name="Furniture">Furniture</p>
                             <div class="contenido">
-
-								<p><%= furniture %></p>
-                                <input type="number" name="amount" placeholder="Amount"><button onclick="XXX()">Add to cart</button>
+								<p>
+								<%
+								for (int i =0;i<furniture.size();i++){
+								%>
+									<p id=<%id_ %>><%= furniture.get(i) %></p>
+									<button onclick="addToCart()">Add to cart</button>
+								<%
+								id_++;
+								}
+								%>
+								 </p>
 
                             </div>
                         </div>
@@ -119,9 +148,17 @@
                         <div class="content-4" id="Materials">
                             <p  id="apartado" name="Materials">Materials</p>
                             <div class="contenido">
-
-								<p><%= materials %></p>
-                                <input type="number" name="amount" placeholder="Amount"><button onclick="XXX()">Add to cart</button>
+								<p>
+								<%
+								for (int i =0;i<materials.size();i++){
+								%>
+									<p id=<%id_ %>><%= materials.get(i) %></p>
+									<button onclick="addToCart()">Add to cart</button>
+								<%
+								id_++;
+								}
+								%>
+								 </p>
 
 
                             </div>
@@ -131,8 +168,17 @@
                             <p  id="apartado" name="Transport">Transport</p>
                             <div class="contenido">
 
-								<p><%= transport %></p>
-                                <input type="number" name="amount" placeholder="Amount"><button onclick="XXX()">Add to cart</button>
+								<p>
+								<%
+								for (int i =0;i<transport.size();i++){
+								%>
+									<p id=<%id_ %>><%= transport.get(i) %></p>
+									<button onclick="addToCart()">Add to cart</button>
+								<%
+								id_++;
+								}
+								%>
+								 </p>
 
                             </div>
                         </div>
@@ -141,8 +187,17 @@
                             <p  id="apartado" name="Machinery">Machinery</p>
                             <div class="contenido">
 
-								<p><%= machinery %></p>
-                                <input type="number" name="amount" placeholder="Amount"><button onclick="XXX()">Add to cart</button>
+								<p>
+								<%
+								for (int i =0;i<machinery.size();i++){
+								%>
+									<p id=<%id_ %>><%= machinery.get(i) %></p>
+									<button onclick="addToCart()">Add to cart</button>
+								<%
+								id_++;
+								}
+								%>
+								 </p>
 
                             </div>
                         </div>
@@ -151,8 +206,17 @@
                             <p  id="apartado" name="Energy">Energy</p>
                             <div class="contenido">
 
-								<p><%= energy %></p>
-                                <input type="number" name="amount" placeholder="Amount"><button onclick="XXX()">Add to cart</button>
+								<p>
+								<%
+								for (int i =0;i<energy.size();i++){
+								%>
+									<p id=<%id_ %>><%= energy.get(i) %></p>
+									<button onclick="addToCart()">Add to cart</button>
+								<%
+								id_++;
+								}
+								%>
+								 </p>
 
                             </div>
                         </div>
@@ -161,8 +225,17 @@
                             <p  id="apartado" name="Appliances">Appliances</p>
                             <div class="contenido">
 
-								<p><%= appliances %></p>
-                                <input type="number" name="amount" placeholder="Amount"><button onclick="XXX()">Add to cart</button>
+								<p>
+								<%
+								for (int i =0;i<appliances.size();i++){
+								%>
+									<p id=<%id_ %>><%= appliances.get(i) %></p>
+									<button onclick="addToCart()">Add to cart</button>
+								<%
+								id_++;
+								}
+								%>
+								 </p>
 
                             </div>
                         </div>
@@ -171,8 +244,17 @@
                             <p id="apartado"  name="Other">Other</p>
                             <div class="contenido">
 
-								<p><%= other %></p>
-                                <input type="number" name="amount" placeholder="Amount"><button onclick="XXX()">Add to cart</button>
+								<p>
+								<%
+								for (int i =0;i<other.size();i++){
+								%>
+									<p id=<%id_ %>><%= other.get(i) %></p>
+									<button onclick="addToCart()">Add to cart</button>
+								<%
+								id_++;
+								}
+								%>
+								 </p>
 
                             </div>
 
@@ -194,13 +276,6 @@
             <h1>Shopping List</h1>
             <table border="2" id="shopping_list">
                 <tbody id="shopping_list_body">
-                    <tr>
-                        <td>Item ID</td>
-                        <td>Item Name</td>
-                        <td>Item Price</td>
-                        <td>Item Amount</td>
-                        <td>Item Category</td>
-                    </tr>
                     
                 </tbody>
             </table>

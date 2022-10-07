@@ -59,13 +59,7 @@ public class Item {
 		}
 	}
 	
-	/**
-	 * Contructor using Name, Price and Category
-	 * @param nameItem
-	 * @param priceItem
-	 * @param category
-	 * @throws ItemException
-	 */
+
 		public Item(String nameItem, Double priceItem, int stock, String category) throws ItemException{
 			boolean canBe = false;
 			while(canBe == false) {
@@ -84,13 +78,13 @@ public class Item {
 				}
 				
 				if(stock > 0 && stock < 99999) {
-					canBe = true;
 					this.stockItem = stock;
 				} else {
 					throw new ItemException("[ERROR 0-23] The item�s stock is out of range or is not valid.");
 				}
 				
 				if(category != null) {
+					canBe = true;
 					this.category = Category.valueOf(category);
 				}
 				Item.idItem += 1;
@@ -123,8 +117,8 @@ public class Item {
 
 	@Override
 	public String toString() {
-		return "Item [idItem=" + idItem + ", nameItem=" + nameItem + ", priceItem=" + priceItem + ", stockItem="
-				+ stockItem + ", category=" + category + "]";
+		return nameItem + ", priceItem=" + priceItem + ", stockItem="
+				+ stockItem + ", category=" + category;
 	}
 
 
