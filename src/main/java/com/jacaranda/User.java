@@ -3,7 +3,7 @@ package com.jacaranda;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 
-@Entity
+@Entity (name = "USERS")
 public class User {
 	
 	@Id
