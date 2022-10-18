@@ -11,27 +11,13 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.hibernate.Session;
-import org.hibernate.SessionFactory;
-import org.hibernate.boot.MetadataSources;
-import org.hibernate.boot.registry.StandardServiceRegistry;
-import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
-
 public class DAOitem {
-        
-	private StandardServiceRegistry sr;
-	private SessionFactory sf;
-	private Session session;
-	
-	
-	/**
-	 * Inicio de la conexión
-	 */
-	public DAOitem() {
-		sr = new StandardServiceRegistryBuilder().configure().build();
-		sf = new MetadataSources(sr).buildMetadata().buildSessionFactory();
-		session = sf.openSession();
-	}
+
+    public DAOitem() {
+    }
+    
+    
+    
     
     public Item getItem(String idItem) throws SQLException, ClassNotFoundException {
         Connection connection = ConectorDB.getConnection();
@@ -50,27 +36,48 @@ public class DAOitem {
     
     
     
-    public boolean addItem(int amount, String name, boolean availability, double price, LocalDate entry_date, String id) throws SQLException, IOException, ClassNotFoundException {
-    	boolean added = false;
-    	session.getTransaction().begin();
-    	//Aqui va la transacción a realizar
-    		Item newItem = new Item(amount,name,availability,price,entry_date,id);
-    		session.save(newItem);
-    	//--------------------------------
-    	session.getTransaction().commit();
-    	return added;
+    public void addItem(int amount, String name, boolean availability, double price, LocalDate entry_date, String id) throws SQLException, IOException, ClassNotFoundException {
+        Connection connection = ConectorDB.getConnection();
+        Statement st =connection.createStatement();
+        ResultSet resulSet =st.executeQuery("select * from items where id= '"+id+"';");
+        
+        PreparedStatement ps = connection.prepareStatement("INSERT INTO items (amount, name, availability, price, entry_date, id) "
+                + " VALUES (?, ?, ?, ?, ?, ?)");
+        
+       
+        if(!resulSet.next()) {
+            ps.setInt(1, amount);
+            ps.setString(2, name);
+            ps.setBoolean(3, availability);
+            ps.setDouble(4, price);
+            ps.setString(5, entry_date.toString());
+            ps.setString(6, id);
+            ps.executeUpdate();
+            
+        }            
     }
     
     
     
     public boolean updateItem(Item item) throws SQLException, ClassNotFoundException {
-    	boolean added = false;
-    	session.getTransaction().begin();
-    	//Aqui va la transacción a realizar
-    		session.update(item);
-    	//--------------------------------
-    	session.getTransaction().commit();
-    	return added;
+
+        Connection connection = ConectorDB.getConnection();
+        Statement st =connection.createStatement();
+        boolean result = false;
+
+        if(getItem(item.getId()) != null) {
+
+        st.executeUpdate("UPDATE items SET amount = "+ item.getAmount() 
+                                        + ", name = '" + item.getName() 
+                                        + "', availability = " + item.getAvailability() 
+                                        + ", price = "+ item.getPrice() 
+                                        + ", entry_date='" + item.getEntry_date() 
+                                        + "' where id = '"
+                                        + item.getId() + "';");
+        
+        result = true;
+        };
+        return result;
         }
     
     
@@ -90,14 +97,12 @@ public class DAOitem {
         }
     
     
-    public boolean deleteItem(Item item) throws SQLException, ClassNotFoundException {
-    	boolean added = false;
-    	session.getTransaction().begin();
-    	//Aqui va la transacción a realizar
-    		session.delete(item);
-    	//--------------------------------
-    	session.getTransaction().commit();
-    	return added;
+    public void deleteItem(String id) throws SQLException, ClassNotFoundException {
+        Connection connection = ConectorDB.getConnection();
+        Statement statement=connection.createStatement(); 
+        
+        
+        statement.executeUpdate("DELETE FROM items WHERE id='"+id+"';");
     }
     
     

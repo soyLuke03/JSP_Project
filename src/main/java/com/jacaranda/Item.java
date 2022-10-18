@@ -5,7 +5,7 @@ import java.util.Objects;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 
-@Entity (name="items")
+@Entity
 public class Item {
 	
 	private int amount;
@@ -13,6 +13,7 @@ public class Item {
 	private Boolean availability;
 	private double price;
 	private LocalDate entry_date;
+	private Category category;
 	
 	@Id
 	private String id;
