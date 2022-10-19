@@ -4,19 +4,24 @@ import java.time.LocalDate;
 import java.util.Objects;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 
 
 @Entity (name="items")
 public class Item {
+	
+	@Id
+	private String id;
 	
 	private int amount;
 	private String name;
 	private Boolean availability;
 	private double price;
 	private LocalDate entry_date;
-	private Category category;
-	@Id
-	private String id;
+	
+	@ManyToOne
+	@JoinColumn private Category categoria;
 
 
 	public Item(String id) {
@@ -95,11 +100,11 @@ public class Item {
 
     
     public void setCategoryId(Category category) {
-    	this.category = category;
+    	this.categoria = category;
     }
     
     public Category getCategory() {
-    	return this.category;
+    	return this.categoria;
     }
 
 

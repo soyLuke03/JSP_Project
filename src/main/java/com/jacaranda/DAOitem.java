@@ -18,12 +18,14 @@ import org.hibernate.boot.MetadataSources;
 import org.hibernate.boot.registry.StandardServiceRegistry;
 import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
 
+
+	
+
 public class DAOitem {
-        
+
 	private StandardServiceRegistry sr;
 	private SessionFactory sf;
 	private Session session;
-	
 	
 	/**
 	 * Inicio de la conexi�n
@@ -33,12 +35,8 @@ public class DAOitem {
 		sf = new MetadataSources(sr).buildMetadata().buildSessionFactory();
 		session = sf.openSession();
 	}
-
-public class DAOitem {
-
-    public DAOitem() {
-    }
-
+	
+   
     
     public Item getItem(String idItem) throws SQLException, ClassNotFoundException {
         Connection connection = ConectorDB.getConnection();
@@ -182,5 +180,6 @@ public class DAOitem {
     return  resultado;
     }
 }
+
 
 

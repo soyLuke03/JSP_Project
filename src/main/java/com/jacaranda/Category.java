@@ -5,23 +5,27 @@ import java.util.List;
 import java.util.Objects;
 
 import javax.persistence.CascadeType;
+import javax.persistence.Entity;
+import javax.persistence.Id;
 import javax.persistence.OneToMany;
 
+@Entity (name="Categoria")
 public class Category {
+	@Id
 	private int id;
 	private String name;
-	@OneToMany(mappedBy = "category", cascade = CascadeType.ALL, orphanRemoval = true)
-	private List<Item> items;
+	@OneToMany(mappedBy = "categoria", cascade = CascadeType.ALL, orphanRemoval = true)
+	private List<Item> category = new ArrayList<>();
 	
 	public Category() {
-		this.items = new ArrayList<>();
+		
 	}
 
 	public Category(int id, String name, List<Item> items) {
 		super();
 		this.id = id;
 		this.name = name;
-		this.items = new ArrayList<>();
+		this.category = new ArrayList<>();
 	}
 
 	public int getId() {
@@ -33,20 +37,20 @@ public class Category {
 	}
 
 	public List<Item> getItems() {
-		return items;
+		return category;
 	}
 
 	public void setItems(List<Item> items) {
-		this.items = items;
+		this.category = items;
 	}
 	
 	public void addItem(Item item) {
-		this.items.add(item);
+		this.category.add(item);
 		item.setCategoryId(this);
 	}
 	
 	public void removeItem(Item item) {
-		this.items.remove(item);
+		this.category.remove(item);
 		item.setCategoryId(null);
 	}
 
@@ -69,7 +73,7 @@ public class Category {
 
 	@Override
 	public String toString() {
-		return "Category [id=" + id + ", name=" + name + ", items=" + items + "]";
+		return "Category [id=" + id + ", name=" + name + ", items=" + category + "]";
 	}
 	
 }
