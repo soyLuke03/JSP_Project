@@ -1,11 +1,8 @@
-create table items (
-	amount int,
-	name varchar(80),
-	availability boolean,
-	price decimal(10,2),	
-	entry_date date,
+create table Categoria (
 	id varchar(50),
-CONSTRAINT PK_ITEM_DATA PRIMARY KEY (id)
+	name varchar(50),
+	
+constraint PK_Categoria Primary key (id)
 );
 
 create table USERS (
@@ -14,14 +11,20 @@ create table USERS (
 CONSTRAINT PK_USERS PRIMARY KEY (name)
 );
 
-create table Categoria (
+create table items (
+	amount int,
+	name varchar(80),
+	availability boolean,
+	price decimal(10,2),	
+	entry_date date,
 	id varchar(50),
-	name varchar(50),
-	idItem varchar(50),
+	categoria_id varchar(50),
 	
-constraint PK_Categoria Primary key (id),
-constraint FK_item Foreign Key (idItem) references items(id)
+CONSTRAINT PK_ITEM_DATA PRIMARY KEY (id),
+constraint FK_item Foreign Key (categoria_id) references Categoria(id)
 );
+
+
 
 insert into USERS values ('Luke', 'Luke');
 insert into USERS values ('Florian', 'Florian');
