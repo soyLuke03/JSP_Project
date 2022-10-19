@@ -5,6 +5,7 @@ import java.util.Objects;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 
+
 @Entity (name="items")
 public class Item {
 	
@@ -13,14 +14,15 @@ public class Item {
 	private Boolean availability;
 	private double price;
 	private LocalDate entry_date;
-	
+	private Category category;
 	@Id
 	private String id;
+
 
 	public Item(String id) {
 		this.id = id;
 	}
-	
+
 	public Item(int amount, String name, Boolean availability, double price, LocalDate entry_date, String id) {
 		super();
 		this.amount = amount;
@@ -89,6 +91,15 @@ public class Item {
 
     public void setId(String id) {
         this.id = id;
+    }
+
+    
+    public void setCategoryId(Category category) {
+    	this.category = category;
+    }
+    
+    public Category getCategory() {
+    	return this.category;
     }
 
 

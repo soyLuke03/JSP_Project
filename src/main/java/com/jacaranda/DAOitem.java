@@ -11,6 +11,7 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
+
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.boot.MetadataSources;
@@ -25,13 +26,19 @@ public class DAOitem {
 	
 	
 	/**
-	 * Inicio de la conexión
+	 * Inicio de la conexiï¿½n
 	 */
 	public DAOitem() {
 		sr = new StandardServiceRegistryBuilder().configure().build();
 		sf = new MetadataSources(sr).buildMetadata().buildSessionFactory();
 		session = sf.openSession();
 	}
+
+public class DAOitem {
+
+    public DAOitem() {
+    }
+
     
     public Item getItem(String idItem) throws SQLException, ClassNotFoundException {
         Connection connection = ConectorDB.getConnection();
@@ -65,7 +72,7 @@ public class DAOitem {
     public boolean addItem(int amount, String name, boolean availability, double price, LocalDate entry_date, String id) throws SQLException, IOException, ClassNotFoundException {
     	boolean added = false;
     	session.getTransaction().begin();
-    	//Aqui va la transacción a realizar
+    	//Aqui va la transacciï¿½n a realizar
     		Item newItem = new Item(amount,name,availability,price,entry_date,id);
     		session.save(newItem);
     	//--------------------------------
@@ -84,12 +91,12 @@ public class DAOitem {
     public boolean updateItem(Item item) throws SQLException, ClassNotFoundException {
     	boolean added = false;
     	session.getTransaction().begin();
-    	//Aqui va la transacción a realizar
+    	//Aqui va la transacciï¿½n a realizar
     		session.update(item);
     	//--------------------------------
     	session.getTransaction().commit();
     	return added;
-        }
+      }
     
     
     
@@ -118,7 +125,7 @@ public class DAOitem {
     public boolean deleteItem(String id) throws SQLException, ClassNotFoundException {
     	boolean added = false;
     	session.getTransaction().begin();
-    	//Aqui va la transacción a realizar
+    	//Aqui va la transacciï¿½n a realizar
     		Item delItem = new Item(id);
     		session.delete("Item", delItem);
     	//--------------------------------

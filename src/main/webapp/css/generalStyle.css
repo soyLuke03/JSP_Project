@@ -1,0 +1,19 @@
+@charset "ISO-8859-1";
+
+
+	#header{
+		padding: 1em;
+	}
+	
+	#welcome{
+		float: right;
+		padding: 1em;
+		margin-top: 1%;
+		text-transform: capitalize;
+	}
+	
+	#contenido{
+		background-color: rgba(0, 198, 228, 0.284);
+		width: 50%;
+		text-align: center;
+	}
