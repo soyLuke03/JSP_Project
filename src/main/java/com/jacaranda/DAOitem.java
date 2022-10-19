@@ -11,13 +11,34 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
+
+import org.hibernate.Session;
+import org.hibernate.SessionFactory;
+import org.hibernate.boot.MetadataSources;
+import org.hibernate.boot.registry.StandardServiceRegistry;
+import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
+
+public class DAOitem {
+        
+	private StandardServiceRegistry sr;
+	private SessionFactory sf;
+	private Session session;
+	
+	
+	/**
+	 * Inicio de la conexi�n
+	 */
+	public DAOitem() {
+		sr = new StandardServiceRegistryBuilder().configure().build();
+		sf = new MetadataSources(sr).buildMetadata().buildSessionFactory();
+		session = sf.openSession();
+	}
+
 public class DAOitem {
 
     public DAOitem() {
     }
-    
-    
-    
+
     
     public Item getItem(String idItem) throws SQLException, ClassNotFoundException {
         Connection connection = ConectorDB.getConnection();
@@ -35,50 +56,47 @@ public class DAOitem {
     
     
     
-    
-    public void addItem(int amount, String name, boolean availability, double price, LocalDate entry_date, String id) throws SQLException, IOException, ClassNotFoundException {
-        Connection connection = ConectorDB.getConnection();
-        Statement st =connection.createStatement();
-        ResultSet resulSet =st.executeQuery("select * from items where id= '"+id+"';");
-        
-        PreparedStatement ps = connection.prepareStatement("INSERT INTO items (amount, name, availability, price, entry_date, id) "
-                + " VALUES (?, ?, ?, ?, ?, ?)");
-        
-       
-        if(!resulSet.next()) {
-            ps.setInt(1, amount);
-            ps.setString(2, name);
-            ps.setBoolean(3, availability);
-            ps.setDouble(4, price);
-            ps.setString(5, entry_date.toString());
-            ps.setString(6, id);
-            ps.executeUpdate();
-            
-        }            
+    /**
+     * Cambio a Hibernate
+     * @param amount
+     * @param name
+     * @param availability
+     * @param price
+     * @param entry_date
+     * @param id
+     * @return
+     * @throws SQLException
+     * @throws IOException
+     * @throws ClassNotFoundException
+     */
+    public boolean addItem(int amount, String name, boolean availability, double price, LocalDate entry_date, String id) throws SQLException, IOException, ClassNotFoundException {
+    	boolean added = false;
+    	session.getTransaction().begin();
+    	//Aqui va la transacci�n a realizar
+    		Item newItem = new Item(amount,name,availability,price,entry_date,id);
+    		session.save(newItem);
+    	//--------------------------------
+    	session.getTransaction().commit();
+    	return added;
     }
     
     
-    
+    /**
+     * Cambio a Hibernate
+     * @param item
+     * @return
+     * @throws SQLException
+     * @throws ClassNotFoundException
+     */
     public boolean updateItem(Item item) throws SQLException, ClassNotFoundException {
-
-        Connection connection = ConectorDB.getConnection();
-        Statement st =connection.createStatement();
-        boolean result = false;
-
-        if(getItem(item.getId()) != null) {
-
-        st.executeUpdate("UPDATE items SET amount = "+ item.getAmount() 
-                                        + ", name = '" + item.getName() 
-                                        + "', availability = " + item.getAvailability() 
-                                        + ", price = "+ item.getPrice() 
-                                        + ", entry_date='" + item.getEntry_date() 
-                                        + "' where id = '"
-                                        + item.getId() + "';");
-        
-        result = true;
-        };
-        return result;
-        }
+    	boolean added = false;
+    	session.getTransaction().begin();
+    	//Aqui va la transacci�n a realizar
+    		session.update(item);
+    	//--------------------------------
+    	session.getTransaction().commit();
+    	return added;
+      }
     
     
     
@@ -97,12 +115,22 @@ public class DAOitem {
         }
     
     
-    public void deleteItem(String id) throws SQLException, ClassNotFoundException {
-        Connection connection = ConectorDB.getConnection();
-        Statement statement=connection.createStatement(); 
-        
-        
-        statement.executeUpdate("DELETE FROM items WHERE id='"+id+"';");
+    /**
+     * Cambio a Hibernate
+     * @param item
+     * @return
+     * @throws SQLException
+     * @throws ClassNotFoundException
+     */
+    public boolean deleteItem(String id) throws SQLException, ClassNotFoundException {
+    	boolean added = false;
+    	session.getTransaction().begin();
+    	//Aqui va la transacci�n a realizar
+    		Item delItem = new Item(id);
+    		session.delete("Item", delItem);
+    	//--------------------------------
+    	session.getTransaction().commit();
+    	return added;
     }
     
     
