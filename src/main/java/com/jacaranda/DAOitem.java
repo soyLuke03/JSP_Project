@@ -98,19 +98,11 @@ public class DAOitem {
     
     
     
-    public boolean userIsvalid(String name, String pass) throws SQLException, ClassNotFoundException {
-        Connection connection = ConectorDB.getConnection();
-        boolean bandera=false;
-
-        Statement st = connection.createStatement();
-        ResultSet resultSet = st.executeQuery("select * from USERS where name='"+name+"'and pass='"+pass+"';");
-        if(resultSet.next()) {
-           
-           bandera=true;
-            
-        }
-        return bandera;
-        }
+    public void userIsvalid(String name, String pass) throws SQLException, ClassNotFoundException {
+    	User aux = new User(name, pass);
+    	User getUser = (User) session.get(User.class, name);
+    	System.out.println("El usuario " + getUser);
+    }
     
     
     /**
