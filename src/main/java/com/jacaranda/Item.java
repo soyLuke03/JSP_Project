@@ -22,7 +22,10 @@ public class Item {
 	
 	@ManyToOne
 	@JoinColumn private Category categoria;
-
+	
+	public Item() {
+		super();
+	}
 
 	public Item(String id) {
 		this.id = id;

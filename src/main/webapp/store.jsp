@@ -62,6 +62,7 @@
 		<table>
 		
 			<tr>
+				<th>Category</th>
 				<th>Amount</th>
 				<th>Name</th>
 				<th>Available</th>
@@ -74,16 +75,20 @@
 		
 		<%
 				
-
-						
-					Iterator<Item> iterator = itemList.iterator();  
-						
-					while(iterator.hasNext()) { 
-					
-					Item item = iterator.next();
-					String id = item.getId();
+	 	
+					for(Item item : itemList) {
+						String categoryId = null;
+						if(item.getCategory() != null) {
+							categoryId = item.getCategory().getId();
+						}
+						String id = item.getId();
 				%>
 			<tr>
+				<%if(categoryId !=  null) {%>
+					<td><%=daoItem.getCategoryName(categoryId)%></td>
+				<%} else {%>
+					<td>Null</td>
+				<%}%>
 				<td><%=item.getAmount()%></td>
 				<td><%=item.getName()%></td>
 				<%

@@ -11,12 +11,12 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
-
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.boot.MetadataSources;
 import org.hibernate.boot.registry.StandardServiceRegistry;
 import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
+import org.hibernate.query.Query;
 
 
 	
@@ -39,17 +39,7 @@ public class DAOitem {
    
     
     public Item getItem(String idItem) throws SQLException, ClassNotFoundException {
-        Connection connection = ConectorDB.getConnection();
-        Statement st = connection.createStatement();
-        
-        ResultSet resultSet = st.executeQuery("select * from items where id= '"+idItem+"';");
-        Item item = null;
-        while (resultSet.next()) {
-            
-            item = new Item(resultSet.getInt(1), resultSet.getString(2), resultSet.getBoolean(3), resultSet.getDouble(4), LocalDate.parse(resultSet.getString(5)), resultSet.getString(6) );
-        }
-            
-        return item;
+    	return session.get(Item.class, idItem);
     }
     
     
@@ -98,10 +88,15 @@ public class DAOitem {
     
     
     
-    public void userIsvalid(String name, String pass) throws SQLException, ClassNotFoundException {
-    	User aux = new User(name, pass);
+    public boolean userIsvalid(String name, String pass) throws SQLException, ClassNotFoundException {
+    	boolean exist = false;
     	User getUser = (User) session.get(User.class, name);
-    	System.out.println("El usuario " + getUser);
+    	
+    	if(getUser.getName().equals(name) && getUser.getPass().equals(pass)) {
+    		exist = true;
+    	}
+    	
+    	return exist;
     }
     
     
@@ -140,38 +135,13 @@ public class DAOitem {
 
     }
 
-    
-    public List<User> getUssers () throws Exception {
-    List<User> resultado= new ArrayList<User>();
-    Connection connection = ConectorDB.getConnection();
-    Statement st = connection.createStatement();
-    ResultSet resultSet = st.executeQuery("select * from USERS");
-
-    while(resultSet.next()) {
-    User usuario= new User(resultSet.getString("name"), resultSet.getString("pass"));
-    resultado.add(usuario);
-    }
-
-    return  resultado;
-    }
-    
-    
-
-    
     public List<Item> getItems() throws Exception {
-    List<Item> resultado= new ArrayList<Item>();
-    Connection connection = ConectorDB.getConnection();
-    Statement st = connection.createStatement();
-    ResultSet resultSet = st.executeQuery("select * from items");
-
-    while(resultSet.next()) {
-    Item car = new Item(resultSet.getInt(1), resultSet.getString(2), resultSet.getBoolean(3), resultSet.getDouble(4), LocalDate.parse(resultSet.getString(5)), resultSet.getString(6));
-    resultado.add(car);
-    
+	    Query<Item> query = session.createQuery("SELECT it FROM items it");
+	    List<Item> resultado= query.getResultList();
+	    return resultado;
     }
-    return  resultado;
+    
+    public String getCategoryName(String id) {
+    	return session.get(Category.class, id).getName();
     }
 }
-
-
-

@@ -12,45 +12,45 @@ import javax.persistence.OneToMany;
 @Entity (name="Categoria")
 public class Category {
 	@Id
-	private int id;
+	private String id;
 	private String name;
 	@OneToMany(mappedBy = "categoria", cascade = CascadeType.ALL, orphanRemoval = true)
-	private List<Item> category = new ArrayList<>();
+	private List<Item> items = new ArrayList<>();
 	
 	public Category() {
 		
 	}
 
-	public Category(int id, String name, List<Item> items) {
+	public Category(String id, String name, List<Item> items) {
 		super();
 		this.id = id;
 		this.name = name;
-		this.category = new ArrayList<>();
+		this.items = new ArrayList<>();
 	}
 
-	public int getId() {
+	public String getId() {
 		return id;
 	}
 
-	public void setId(int id) {
+	public void setId(String id) {
 		this.id = id;
 	}
 
-	public List<Item> getItems() {
-		return category;
+	public String getName() {
+		return name;
 	}
 
-	public void setItems(List<Item> items) {
-		this.category = items;
+	public void setName(String name) {
+		this.name = name;
 	}
-	
+
 	public void addItem(Item item) {
-		this.category.add(item);
+		this.items.add(item);
 		item.setCategoryId(this);
 	}
 	
 	public void removeItem(Item item) {
-		this.category.remove(item);
+		this.items.remove(item);
 		item.setCategoryId(null);
 	}
 
@@ -73,7 +73,7 @@ public class Category {
 
 	@Override
 	public String toString() {
-		return "Category [id=" + id + ", name=" + name + ", items=" + category + "]";
+		return "Category [id=" + id + ", name=" + name + ", items=" + items + "]";
 	}
 	
 }

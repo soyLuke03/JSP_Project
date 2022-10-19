@@ -1,10 +1,10 @@
 <%@page import="com.jacaranda.DAOitem"%>
+<jsp:useBean id="dao" class="com.jacaranda.DAOitem"></jsp:useBean>
 
 <%
 String usuario = request.getParameter("user");
    	String password = request.getParameter("password");
-    
-    DAOitem dao = new DAOitem();
+   	
     if(usuario !=null && password !=null){
     	if(dao.userIsvalid(usuario, password)==true){
             			
