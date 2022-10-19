@@ -88,7 +88,14 @@ public class Item {
     public void setId(String id) {
         this.id = id;
     }
-
+    
+    public void setCategoryId(Category category) {
+    	this.category = category;
+    }
+    
+    public Category getCategory() {
+    	return this.category;
+    }
 
     @Override
 	public int hashCode() {
