@@ -1,4 +1,4 @@
-package com.jacaranda;
+package com.jacaranda.Category;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -8,6 +8,8 @@ import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
+
+import com.jacaranda.Item.Item;
 
 @Entity (name="Categoria")
 public class Category {

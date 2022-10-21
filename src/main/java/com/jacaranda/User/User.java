@@ -1,4 +1,4 @@
-package com.jacaranda;
+package com.jacaranda.User;
 
 import java.util.Objects;
 

@@ -1,4 +1,4 @@
-package com.jacaranda;
+package com.jacaranda.Item;
 
 import java.time.LocalDate;
 import java.util.Objects;
@@ -6,6 +6,8 @@ import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+
+import com.jacaranda.Category.Category;
 
 
 @Entity (name="items")
