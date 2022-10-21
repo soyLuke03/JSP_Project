@@ -118,7 +118,7 @@ public class DAOitem {
     	return added;
     }
     
-    
+    /*
     public User getUser (String name) throws Exception {
     User resultado=null;
     Connection connection = ConectorDB.getConnection();
@@ -134,9 +134,10 @@ public class DAOitem {
     return resultado;
 
     }
-
+	*/
+    
     public List<Item> getItems() throws Exception {
-	    Query<Item> query = session.createQuery("SELECT it FROM items it");
+		Query<Item> query = session.createQuery("SELECT it FROM items it");
 	    List<Item> resultado= query.getResultList();
 	    return resultado;
     }

@@ -14,12 +14,14 @@
         	if(isSession == null && userSession == null){
         		response.sendRedirect("error.jsp?msg=Return to the login please");
         	}
-        	
+
+        	/*
         	String idItem = request.getParameter("value");
         	
         	DAOitem daoItem = new DAOitem();
 			int total = daoItem.getItems().size();
         	Item item = daoItem.getItem(idItem);
+        	*/
     %>
 <!DOCTYPE html>
 <html>

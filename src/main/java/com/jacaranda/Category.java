@@ -14,6 +14,7 @@ public class Category {
 	@Id
 	private String id;
 	private String name;
+	private String description;
 	@OneToMany(mappedBy = "categoria", cascade = CascadeType.ALL, orphanRemoval = true)
 	private List<Item> items = new ArrayList<>();
 	
@@ -21,11 +22,30 @@ public class Category {
 		
 	}
 
-	public Category(String id, String name, List<Item> items) {
+	public Category(String id, String name, String description) {
 		super();
 		this.id = id;
 		this.name = name;
-		this.items = new ArrayList<>();
+		this.description = description;
+		items = new ArrayList<>();
+	}
+	
+	
+
+	public String getDescription() {
+		return description;
+	}
+
+	public void setDescription(String description) {
+		this.description = description;
+	}
+
+	public List<Item> getItems() {
+		return items;
+	}
+
+	public void setItems(List<Item> items) {
+		this.items = items;
 	}
 
 	public String getId() {
