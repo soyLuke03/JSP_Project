@@ -31,21 +31,11 @@ public class DaoCategory {
 		} else {
 			throw new CategoryException("The category id exist.");
 		}
+		
 	}
 	
-	public void deleteCategory(String id) throws CategoryException {
-		Category aux = session.get(Category.class, id);
-		if(aux != null) {
-			session.getTransaction().begin();
-			session.delete(aux);
-			session.getTransaction().commit();
-		} else {
-			throw new CategoryException("The category dont't exist.");
-		}
-	}
-	
-	public Category getCategory(String id) {
-		return session.get(Category.class, id);
+	public String getCategoryName(String id) {
+		return session.get(Category.class, id).getName();
 	}
 	
 	public List<Category> getCategorys() {

@@ -8,7 +8,7 @@
     	if(dao.userIsvalid(usuario, password) == true){			
          	session.setAttribute("login", "True");
          	session.setAttribute("usuario", usuario);
-    		response.sendRedirect("store.jsp");		
+    		response.sendRedirect("Category/CategoryList.jsp");		
        	} else { 
        		response.sendRedirect("index.jsp?msg_error=true");
   	 	}

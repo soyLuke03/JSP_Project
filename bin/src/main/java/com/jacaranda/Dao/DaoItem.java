@@ -47,13 +47,14 @@ public class DaoItem {
 	 * @throws IOException
 	 * @throws ClassNotFoundException
 	 */
-	public void addItem(Item newItem) {
+	public boolean addItem(Item newItem) {
 		boolean added = false;
 		session.getTransaction().begin();
 		// Aqui va la transacci�n a realizar
 		session.save(newItem);
 		// --------------------------------
 		session.getTransaction().commit();
+		return added;
 	}
 
 	/**
@@ -64,12 +65,14 @@ public class DaoItem {
 	 * @throws SQLException
 	 * @throws ClassNotFoundException
 	 */
-	public void updateItem(Item item) {
+	public boolean updateItem(Item item) {
+		boolean added = false;
 		session.getTransaction().begin();
 		// Aqui va la transacci�n a realizar
 		session.update(item);
 		// --------------------------------
 		session.getTransaction().commit();
+		return added;
 	}
 
 	/**
@@ -80,13 +83,15 @@ public class DaoItem {
 	 * @throws SQLException
 	 * @throws ClassNotFoundException
 	 */
-	public void deleteItem(String id) {
+	public boolean deleteItem(String id) {
+		boolean added = false;
 		session.getTransaction().begin();
 		// Aqui va la transacci�n a realizar
 		Item delItem = new Item(id);
 		session.delete("Item", delItem);
 		// --------------------------------
 		session.getTransaction().commit();
+		return added;
 	}
 
 	public List<Item> getItems(String categoryId) throws Exception {

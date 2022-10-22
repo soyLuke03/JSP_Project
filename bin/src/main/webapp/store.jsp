@@ -1,14 +1,16 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ page import="com.jacaranda.DAOitem" %>
 <%@page import="java.util.Iterator"%>
-<%@ page import="com.jacaranda.Item" %>
+<%@ page import="com.jacaranda.Item.Item" %>
 <%@ page import="java.util.List"%>
+<jsp:useBean id="daoItem" class="com.jacaranda.Dao.DaoItem"></jsp:useBean>
+<jsp:useBean id="daoCategory" class="com.jacaranda.Dao.DaoCategory"></jsp:useBean>
 <%
 
 
 	String isSession = (String) session.getAttribute("login");
 	String userSession = (String) session.getAttribute("usuario");
+	String categoryId = request.getParameter("value");
 	
 	if(isSession == null && userSession == null){
 		response.sendRedirect("error.jsp?msg=You´re not logged in.");
@@ -34,7 +36,7 @@
 		 	</span>
 		 	
 		 	<span id="welcome">
-		 		<a href="addItem.jsp"><button name="addItem" id="addButton" value="addItem">Willing to sell?</button></a> 
+		 		<a href="addItem.jsp?value=<%=categoryId%>"><button name="addItem" id="addButton">Willing to sell?</button></a> 
 		 	</span>
         <hr color="black" size="5">
     </div>
@@ -45,12 +47,9 @@
 	<br>
 	
 <%
-
-
-	DAOitem daoItem = new DAOitem();
 	List<Item> itemList = null;
 	try {
-		itemList = daoItem.getItems();
+		itemList = daoItem.getItems(categoryId);
 	
 	} catch (Exception e) {
 		String message = e.getMessage();
@@ -62,6 +61,7 @@
 		<table>
 		
 			<tr>
+				<th>Category</th>
 				<th>Amount</th>
 				<th>Name</th>
 				<th>Available</th>
@@ -74,16 +74,10 @@
 		
 		<%
 				
-
-						
-					Iterator<Item> iterator = itemList.iterator();  
-						
-					while(iterator.hasNext()) { 
-					
-					Item item = iterator.next();
-					String id = item.getId();
-				%>
+	 	
+					for(Item item : itemList) {%>
 			<tr>
+				<td><%=daoCategory.getCategoryName(categoryId) %></td>
 				<td><%=item.getAmount()%></td>
 				<td><%=item.getName()%></td>
 				<%
@@ -107,10 +101,10 @@
 				<td><%=item.getId()%></td>
 		
 				<td id="deletePic">
-					<a href="deleteItem.jsp?value=<%=item.getId()%>"><img src="images/delete.png" width="30px"></a>
+					<a href="deleteItem.jsp?value=<%=item.getId()%>&categoryId=<%=categoryId%>"><img src="images/delete.png" width="30px"></a>
 				</td>
 				<td id="updatePic">
-					<a href="UpdateItem.jsp?value=<%=item.getId()%>"><img src="images/update.png" width="30px"></a>
+					<a href="UpdateItem.jsp?value=<%=item.getId()%>categoryId=<%=categoryId%>"><img src="images/update.png" width="30px"></a>
 				</td>
 			</tr>
 		<%

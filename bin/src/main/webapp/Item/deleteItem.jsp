@@ -1,10 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
     <%@page import="java.sql.Date"%>
-<%@page import="com.jacaranda.DAOitem"%>
-<%@page import="com.jacaranda.Item"%>
+<%@page import="com.jacaranda.Item.Item"%>
 <%@page import="java.time.format.DateTimeFormatter"%>
 <%@page import="java.time.LocalDate"%>
+<jsp:useBean id="daoItem" class="com.jacaranda.Dao.DaoItem"></jsp:useBean>
 <%
 
 	String isSession = (String) session.getAttribute("login");
@@ -15,7 +15,7 @@
 	}
 	
 	String idItem = request.getParameter("value");
-	DAOitem daoItem = new DAOitem();
+	String categoryId = request.getParameter("categoryId");
 	Item item = daoItem.getItem(idItem);
 %>
 
@@ -54,8 +54,8 @@
 				<br>
 				
 				
-				<a href="DeleteMeNow.jsp?idDelete=<%=item.getId()%>"><button name="EliminarCoche">Delete me now</button></a>
-				<a href="store.jsp"><button name="Volver">Return to shop</button></a>
+				<a href="DeleteMeNow.jsp?idDelete=<%=item.getId()%>&categoryId=<%=categoryId%>"><button name="EliminarCoche">Delete me now</button></a>
+				<a href="store.jsp?value=<%=categoryId%>"><button name="Volver">Return to shop</button></a>
 		
 		
     </div>            

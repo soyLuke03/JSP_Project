@@ -1,9 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-    <%@ page import="com.jacaranda.DAOitem" %>
 <%@page import="java.util.Iterator"%>
-<%@ page import="com.jacaranda.Item" %>
+<%@ page import="com.jacaranda.Item.Item" %>
 <%@ page import="java.util.List"%>
+<jsp:useBean id="daoItem" class="com.jacaranda.Dao.DaoItem"></jsp:useBean>
 <%
 	String isSession = (String) session.getAttribute("login");
 	String userSession = (String) session.getAttribute("usuario");
@@ -14,8 +14,7 @@
 	
 	String idItem = request.getParameter("value");
 	
-	DAOitem daoCar = new DAOitem();
-	Item item = daoCar.getItem(idItem);
+	Item item = daoItem.getItem(idItem);
 %>
 
 

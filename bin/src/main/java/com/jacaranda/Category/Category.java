@@ -36,6 +36,8 @@ public class Category {
 		items = new ArrayList<>();
 	}
 	
+	
+
 	public String getDescription() {
 		return description;
 	}
@@ -93,10 +95,6 @@ public class Category {
 			return false;
 		Category other = (Category) obj;
 		return id == other.id;
-	}
-	
-	public String getShortInfo() {
-	    return  "[NAME]: " + name + " [ID]: " + id ;
 	}
 
 	@Override
