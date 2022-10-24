@@ -74,7 +74,7 @@
 						<a href="deleteCategory.jsp?value=<%=aux.getId()%>"><img src="../images/delete.png" width="30px"></a>
 						</td>
 						<td id="updatePic">
-							<a href="UpdateItem.jsp?value=<%=aux.getId()%>"><img src="../images/update.png" width="30px"></a>
+							<a href="UpdateCategory.jsp?value=<%=aux.getId()%>"><img src="../images/update.png" width="30px"></a>
 						</td>
 						<td>
 							<span>

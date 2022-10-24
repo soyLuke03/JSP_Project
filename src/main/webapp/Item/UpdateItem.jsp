@@ -85,7 +85,7 @@
 				
 				<button type="submit">Update me now</button>
 		</form>
-				<a href="../store.jsp"><button name="Volver">Return to shop</button></a>
+				<a href="../store.jsp?value=<%=categoryId%>"><button name="Volver">Return to shop</button></a>
 		
     </div>     
 
