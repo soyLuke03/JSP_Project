@@ -19,13 +19,13 @@
 		Double priceItem = Double.parseDouble(request.getParameter("PriceItem"));
 		LocalDate entryDataItem = LocalDate.parse(String.valueOf((request.getParameter("EntryDataItem"))));
 		String idItem = request.getParameter("IdItem");
-		String categoryItem = request.getParameter("categoryName");
+		String categoryId = request.getParameter("categoryId");
 		
-		Category newCategory = new Category(categoryItem);
+		Category newCategory = new Category(categoryId);
 		Item aux = new Item(amountItem, nameItem, availableItem, priceItem, entryDataItem, idItem, newCategory);
 		daoItem.addItem(aux);
 		
-		response.sendRedirect("store.jsp?value=" + categoryItem);
+		response.sendRedirect("../store.jsp?value=" + categoryId);
 	%>
 
 </body>
