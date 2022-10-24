@@ -58,9 +58,21 @@
 				<legend id="legends"><b>Introduce the new info: </b></legend>
 				
 				
+				<label>Category Name:</label>
+				<input type="text" value="<%= newCategory.getName()%>">
+				
+				<br>
+				<br>
+				
+				<label>Category Description</label>
+				<input type="text" value="<%= newCategory.getDescription()%>">
+				
+				<br>
+				<br>
+				
 				<button type="submit">Update me now</button>
 		</form>
-				<a href="../store.jsp"><button name="Volver">Return to shop</button></a>
+				<a href="CategoryList.jsp"><button name="Volver">Return to shop</button></a>
 		
     </div>           
 		
