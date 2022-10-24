@@ -1,6 +1,7 @@
 create table Categoria (
 	id varchar(50),
 	name varchar(50),
+	description varchar(200),
 	
 constraint PK_Categoria Primary key (id)
 );
@@ -24,21 +25,22 @@ CONSTRAINT PK_ITEM_DATA PRIMARY KEY (id),
 constraint FK_item Foreign Key (categoria_id) references Categoria(id)
 );
 
-
+INSERT into Categoria values ('1', 'Cosas', 'Cosas');
+INSERT into Categoria values ('2', 'Mas Cosas', 'Mas Cosas');
 
 insert into USERS values ('Luke', 'Luke');
 insert into USERS values ('Florian', 'Florian');
 
-insert into items (amount, name, availability, price, entry_date, id) values (1703, 'Old Second Bancorp, Inc.', false, 251108.11, '2007-06-28', 'com.sitemeter.Ventosanzap');
+insert into items (amount, name, availability, price, entry_date, id, categoria_id) values (1703, 'Old Second Bancorp, Inc.', false, 251108.11, '2007-06-28', 'com.sitemeter.Ventosanzap', '1');
 insert into items (amount, name, availability, price, entry_date, id) values (17971, 'Imax Corporation', true, 148061.99, '2018-03-11', 'edu.stanford.Mat Lam Tam');
 insert into items (amount, name, availability, price, entry_date, id) values (5524, 'Torchlight Energy Resources, Inc.', false, 87093.58, '2000-12-25', 'gov.fda.Ronstring');
 insert into items (amount, name, availability, price, entry_date, id) values (8511, 'NexPoint Residential Trust, Inc.', true, 284941.67, '2007-12-17', 'nl.google.Zoolab');
 insert into items (amount, name, availability, price, entry_date, id) values (4067, 'Cabela''s Inc', false, 50538.15, '2007-08-29', 'net.earthlink.Kanlam');
-insert into items (amount, name, availability, price, entry_date, id) values (10172, 'Tyler Technologies, Inc.', true, 237259.99, '2005-03-13', 'de.1und1.Bamity');
+insert into items (amount, name, availability, price, entry_date, id, categoria_id) values (10172, 'Tyler Technologies, Inc.', true, 237259.99, '2005-03-13', 'de.1und1.Bamity', '1');
 insert into items (amount, name, availability, price, entry_date, id) values (5863, 'Gold Fields Limited', false, 136787.09, '2021-08-22', 'uk.co.google.Greenlam');
 insert into items (amount, name, availability, price, entry_date, id) values (9841, 'Annaly Capital Management Inc', true, 108867.7, '2009-12-31', 'com.elegantthemes.Rank');
 insert into items (amount, name, availability, price, entry_date, id) values (14216, 'Neogen Corporation', true, 229032.61, '2011-12-24', 'com.webmd.Sonsing');
-insert into items (amount, name, availability, price, entry_date, id) values (1284, 'KBS Fashion Group Limited', true, 124834.16, '2015-01-28', 'au.com.google.Bigtax');
+insert into items (amount, name, availability, price, entry_date, id, categoria_id) values (1284, 'KBS Fashion Group Limited', true, 124834.16, '2015-01-28', 'au.com.google.Bigtax', '2');
 insert into items (amount, name, availability, price, entry_date, id) values (1314, 'Global X Millennials Thematic ETF', true, 211818.36, '2013-10-31', 'uk.co.dailymail.Matsoft');
 insert into items (amount, name, availability, price, entry_date, id) values (5154, 'Quorum Health Corporation', false, 39247.06, '2016-07-04', 'com.dedecms.Bigtax');
 insert into items (amount, name, availability, price, entry_date, id) values (18033, 'Western Asset/Claymore U.S. Treasury Inflation Prot Secs Fd', true, 196571.06, '2004-03-09', 'edu.psu.Tin');
@@ -129,7 +131,3 @@ insert into items (amount, name, availability, price, entry_date, id) values (84
 insert into items (amount, name, availability, price, entry_date, id) values (7495, 'Sprouts Farmers Market, Inc.', true, 192133.12, '2001-02-18', 'me.flavors.Tempsoft');
 insert into items (amount, name, availability, price, entry_date, id) values (2350, 'KCAP Financial, Inc.', false, 208099.83, '2005-02-03', 'com.amazon.Holdlamis');
 insert into items (amount, name, availability, price, entry_date, id) values (19007, 'Gabelli Dividend', false, 32928.13, '2014-01-16', 'com.blinklist.Kanlam');
-
-
-
-
