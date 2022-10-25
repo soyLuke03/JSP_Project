@@ -11,12 +11,12 @@
 </head>
 <body>
 <% 
-	String Cname = request.getParameter("Cname");
+	String Cname = request.getParameter("CName");
 	String CDescription = request.getParameter("CDescription");
 	String CId = request.getParameter("CId");
 	
 	Category newCat = new Category(CId,Cname,CDescription);
-	daoCategory.updateCategory(CId);
+	daoCategory.updateCategory(newCat);
 	response.sendRedirect("CategoryList.jsp");
 %>
 	
