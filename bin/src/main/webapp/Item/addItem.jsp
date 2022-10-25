@@ -3,6 +3,7 @@
 <%@page import="java.time.LocalDate"%>
 <%@page import="com.jacaranda.Item.Item"%>
 <jsp:useBean id="daoItem" class="com.jacaranda.Dao.DaoItem"></jsp:useBean>
+<jsp:useBean id="daoCategory" class="com.jacaranda.Dao.DaoCategory"></jsp:useBean>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 
@@ -12,7 +13,7 @@ String userSession = (String) session.getAttribute("usuario");
 String categoryId = request.getParameter("value");
 
 if (isSession == null && userSession == null) {
-	response.sendRedirect("error.jsp?msg=Return to the login please");
+	response.sendRedirect("../error.jsp?msg=Return to the login please");
 }
 
 %>
@@ -21,20 +22,20 @@ if (isSession == null && userSession == null) {
 <head>
 <meta charset="UTF-8">
 <title>Add Item</title>
-<link rel="stylesheet" type="text/css" href="css/generalStyle.css">
+<link rel="stylesheet" type="text/css" href="../css/generalStyle.css">
 
 </head>
 <body>
 
 	<div id="header">
-		<a href="store.jsp"> <img src="images/logo.png" width="110px"
+		<a href="../store.jsp"> <img src="../images/logo.png" width="110px"
 			height="100px" id="logo"></a> <span id="welcome">
 			<button>
 				<h4>
 					Sesion:
 					<%=userSession%></h4>
 			</button>
-		</span> <span id="welcome"> <a href="index.jsp"><button>
+		</span> <span id="welcome"> <a href="../index.jsp"><button>
 					<h4>Log Out</h4>
 				</button></a>
 		</span>
@@ -76,12 +77,13 @@ if (isSession == null && userSession == null) {
 			<br><br>
 			
 			<label for="categoryName">Category name</label>
-			<input type="text" name="categoryName" value="<%=categoryId %>" readonly required>
+			<input type="hidden" name="categoryId" value="<%=categoryId%>">
+			<input type="text" value="<%=daoCategory.getCategory(categoryId).getName() %>" readonly required>
 			<br><br>			
 
-			<button name="AddItem">Add item</button>
+			<button type="submit">Add item</button>
 		</form>
-		<a href="store.jsp?value=<%=categoryId%>"><button>Return to shop</button></a>
+		<a href="../store.jsp?value=<%=categoryId%>"><button>Return to shop</button></a>
 
 	</div>
 

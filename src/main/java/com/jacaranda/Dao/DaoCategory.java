@@ -33,6 +33,17 @@ public class DaoCategory {
 		}
 	}
 	
+	public void updateCategory(Category newCategory) throws CategoryException {
+		Category aux = session.get(Category.class, newCategory.getId());
+		aux.setName(newCategory.getName());
+		aux.setDescription(newCategory.getDescription());
+		
+			session.getTransaction().begin();
+			session.update(aux);
+			session.getTransaction().commit();
+		
+	}
+	
 	public void deleteCategory(String id) throws CategoryException {
 		Category aux = session.get(Category.class, id);
 		if(aux != null) {
@@ -40,7 +51,7 @@ public class DaoCategory {
 			session.delete(aux);
 			session.getTransaction().commit();
 		} else {
-			throw new CategoryException("The category dont't exist.");
+			throw new CategoryException("The category doesn´t exist.");
 		}
 	}
 	

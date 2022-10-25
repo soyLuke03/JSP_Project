@@ -36,7 +36,11 @@
 		 	</span>
 		 	
 		 	<span id="welcome">
-		 		<a href="addItem.jsp?value=<%=categoryId%>"><button name="addItem" id="addButton">Willing to sell?</button></a> 
+		 		<a href="Category/CategoryList.jsp"><button><h4>Categories</h4></button></a>
+		 	</span>
+		 	
+		 	<span id="welcome">
+		 		<a href="Item/addItem.jsp?value=<%=categoryId%>"><button name="addItem" id="addButton">Willing to sell?</button></a> 
 		 	</span>
         <hr color="black" size="5">
     </div>
@@ -77,7 +81,7 @@
 	 	
 					for(Item item : itemList) {%>
 			<tr>
-				<td><%=daoCategory.getCategoryName(categoryId) %></td>
+				<td><%=daoCategory.getCategory(categoryId).getName() %></td>
 				<td><%=item.getAmount()%></td>
 				<td><%=item.getName()%></td>
 				<%
@@ -101,10 +105,10 @@
 				<td><%=item.getId()%></td>
 		
 				<td id="deletePic">
-					<a href="deleteItem.jsp?value=<%=item.getId()%>&categoryId=<%=categoryId%>"><img src="images/delete.png" width="30px"></a>
+					<a href="Item/deleteItem.jsp?value=<%=item.getId()%>&categoryId=<%=categoryId%>"><img src="images/delete.png" width="30px"></a>
 				</td>
 				<td id="updatePic">
-					<a href="UpdateItem.jsp?value=<%=item.getId()%>categoryId=<%=categoryId%>"><img src="images/update.png" width="30px"></a>
+					<a href="Item/UpdateItem.jsp?value=<%=item.getId()%>&categoryId=<%=categoryId%>"><img src="images/update.png" width="30px"></a>
 				</td>
 			</tr>
 		<%

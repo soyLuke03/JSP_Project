@@ -28,13 +28,13 @@
 <head>
 <meta charset="UTF-8">
 <title>Add Item</title>
-        <link rel="stylesheet" type="text/css" href="css/generalStyle.css">
+        <link rel="stylesheet" type="text/css" href="../css/generalStyle.css">
 
 </head>
 	<body>
 			<!-- HEADER de las páginas -->
 		<div id="header">
-	    	<a href="store.jsp"><img src="images/logo.png" width="110px" height="100px" id="logo"></a>
+	    	<a href="store.jsp"><img src="../images/logo.png" width="110px" height="100px" id="logo"></a>
 	        	<!-- Boton FalsoBoton de Session -->
 	        	<span id="welcome">
 	        		<button><h4>Sesion: <%=(userSession)%></h4></button>

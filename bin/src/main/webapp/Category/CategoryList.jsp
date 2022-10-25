@@ -20,19 +20,19 @@
 <head>
 	<meta charset="UTF-8">
 	<title>The Mega Store</title>
-	<link rel="stylesheet" type="text/css" href="css/styleTablePage.css">
+	<link rel="stylesheet" type="text/css" href="../css/styleTablePage.css">
 </head>
 <body>
 	<!-- HEADER de las páginas -->
 	<div id="header">
-    	<a href="store.jsp"><img src="images/logo.png" width="110px" height="100px" id="logo"></a>
+    	<img src="../images/logo.png" width="110px" height="100px" id="logo">
         	<!-- Boton FalsoBoton de Session -->
         	<span id="welcome">
         		<button><h4>Sesion: <%=(userSession)%></h4></button>
         	</span>
         	<!-- Boton LogOut -->
 		 	<span id="welcome">
-		 		<a href="index.jsp"><button><h4>Log Out</h4></button></a>
+		 		<a href="../index.jsp"><button><h4>Log Out</h4></button></a>
 		 	</span>
 		 	<!-- Boton Willing to sell -->
 		 	<span id="welcome">
@@ -71,14 +71,14 @@
 						<td><%=aux.getId() %></td>
 						<td><%=aux.getDescription() %></td>
 						<td id="deletePic">
-						<a href="deleteItem.jsp?value=<%=aux.getId()%>"><img src="images/delete.png" width="30px"></a>
+						<a href="deleteCategory.jsp?value=<%=aux.getId()%>"><img src="../images/delete.png" width="30px"></a>
 						</td>
 						<td id="updatePic">
-							<a href="UpdateItem.jsp?value=<%=aux.getId()%>"><img src="images/update.png" width="30px"></a>
+							<a href="UpdateCategory.jsp?value=<%=aux.getId()%>"><img src="../images/update.png" width="30px"></a>
 						</td>
 						<td>
 							<span>
-						 		<a href="store.jsp?value=<%=aux.getId()%>"><button>Categories</button></a>
+						 		<a href="../store.jsp?value=<%=aux.getId()%>"><button>Categories</button></a>
 						 	</span>
 						</td>
 					</tr>
