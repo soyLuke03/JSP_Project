@@ -40,7 +40,7 @@
 		 	</span>
 		 	<!-- Botón de Add Categoria -->
 		 	<span id="welcome">
-		 		<a href="Item/addItem.jsp?value=<%=categoryId%>"><button name="addItem" id="addButton">Add new category</button></a> 
+		 		<a href="Item/addItem.jsp?value=<%=categoryId%>"><button name="addItem" id="addButton">Add new</button></a> 
 		 	</span>
         <!-- Línea de división -->
         <hr color="black" size="5">
@@ -61,6 +61,9 @@
 %>
 
 	<div id="content-table">
+		<caption>
+			<h1>Enterprises List</h1>
+		</caption>
 		<table>
 		
 			<tr>

@@ -41,7 +41,6 @@
         <hr color="black" size="5">
     </div>
 	<br>
-	
 <%
 
 	List<Category> itemList = null;
@@ -54,6 +53,9 @@
 %>
 
 	<div id="content-table">
+		<caption>
+			<h1>Category list:</h1>
+		</caption>
 		<table>
 		
 			<tr>

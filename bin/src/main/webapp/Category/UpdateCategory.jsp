@@ -43,29 +43,29 @@
 	    
 	    
 	    <div id="contenido">
-		<form action="UpdateMeNow.jsp" method="GET" id="updateItemForm">
+		<form action="UpdateCategoryNow.jsp" method="GET" id="updateItemForm">
 			<input type="hidden" value="<%= newCategory.getId()%>" name="id">
 			<input type="hidden" value="<%= newCategory.getName()%>" name="categoryName">
 			<h1>Update an item: </h1>
 			<p>
-				ID:
+				ID CATEGORY:
 			<br> 
 			 	<%=newCategory.getId()%>
-			 	<%=newCategory.getName()%>
 			 </p>
 		
 			<br>
 				<legend id="legends"><b>Introduce the new info: </b></legend>
 				
+				<input type="hidden" name="CId" id="CId" value="<%=newCategory.getId()%>">
 				
 				<label>Category Name:</label>
-				<input type="text" value="<%= newCategory.getName()%>">
+				<input type="text" name="CName" id="CName" value="<%= newCategory.getName()%>">
 				
 				<br>
 				<br>
 				
 				<label>Category Description</label>
-				<input type="text" value="<%= newCategory.getDescription()%>">
+				<input type="text" name="CDescription" id="CDescription" value="<%= newCategory.getDescription()%>">
 				
 				<br>
 				<br>
