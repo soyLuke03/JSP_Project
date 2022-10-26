@@ -3,6 +3,7 @@
 <%
 	String usuario = request.getParameter("user");
    	String password = request.getParameter("password");
+   	HttpSession sesion = request.getSession();
    	
     if(usuario !=null && password !=null){
     	if(dao.userIsvalid(usuario, password) == true){			
