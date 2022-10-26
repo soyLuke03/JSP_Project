@@ -37,6 +37,7 @@ public class DaoCategory {
 		Category aux = session.get(Category.class, newCategory.getId());
 		aux.setName(newCategory.getName());
 		aux.setDescription(newCategory.getDescription());
+		aux.setId(newCategory.getId());
 		
 			session.getTransaction().begin();
 			session.update(aux);
