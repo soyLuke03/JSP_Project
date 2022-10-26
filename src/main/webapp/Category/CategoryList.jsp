@@ -65,7 +65,7 @@
 				<th>Description</th>
 				<th>Delete</th>
 				<th>Update</th>
-				<th>Categories</th>
+				<th>Items</th>
 			</tr>
 			<%
 				for(Category aux : itemList) {%>
@@ -81,7 +81,7 @@
 						</td>
 						<td>
 							<span>
-						 		<a href="../store.jsp?value=<%=aux.getId()%>"><button>Categories</button></a>
+						 		<a href="../store.jsp?value=<%=aux.getId()%>"><button>Items</button></a>
 						 	</span>
 						</td>
 					</tr>
