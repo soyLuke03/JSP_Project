@@ -25,11 +25,13 @@
 					
 						if(errorMsg!=null){
 						%>
+						<br>
 						<div>
-							<span id="errorMessage">User or Password was incorrect</span>
+							<span id="errorMessage">The User or Password is not correct</span>
 						</div>
 						<%}%>
 		                <hr>
+		                <br>
 	                    <input type="submit" id="Enviar" value="Enviar">
 	          		</form>
 	       		</div>

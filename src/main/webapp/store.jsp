@@ -6,8 +6,7 @@
 <jsp:useBean id="daoItem" class="com.jacaranda.Dao.DaoItem"></jsp:useBean>
 <jsp:useBean id="daoCategory" class="com.jacaranda.Dao.DaoCategory"></jsp:useBean>
 <%
-
-
+	//Control de sesiones
 	String isSession = (String) session.getAttribute("login");
 	String userSession = (String) session.getAttribute("usuario");
 	String categoryId = request.getParameter("value");
@@ -24,33 +23,33 @@
 	<link rel="stylesheet" type="text/css" href="css/styleTablePage.css">
 </head>
 <body>
+		<!-- HEADER -->
 		<div id="header">
     	<a href="store.jsp"><img src="images/logo.png" width="110px" height="100px" id="logo"></a>
+        	<!-- Recuadro de la Session -->
         	<span id="welcome">
-        		<button><h4>Sesion: <%=(userSession)%></h4></button>
+        		<button><h4>Session: <%=(userSession)%></h4></button>
         	</span>
-        	
-        	
+        	<!-- Recuadro de Log out -->
 		 	<span id="welcome">
 		 		<a href="index.jsp"><button><h4>Log Out</h4></button></a>
 		 	</span>
-		 	
+		 	<!-- Botón a Categorias -->
 		 	<span id="welcome">
 		 		<a href="Category/CategoryList.jsp"><button><h4>Categories</h4></button></a>
 		 	</span>
-		 	
+		 	<!-- Botón de Add Categoria -->
 		 	<span id="welcome">
-		 		<a href="Item/addItem.jsp?value=<%=categoryId%>"><button name="addItem" id="addButton">Willing to sell?</button></a> 
+		 		<a href="Item/addItem.jsp?value=<%=categoryId%>"><button name="addItem" id="addButton">Add new category</button></a> 
 		 	</span>
+        <!-- Línea de división -->
         <hr color="black" size="5">
-    </div>
-	
-	<div id="botonadd" align="right">
 		
 	</div>
 	<br>
 	
 <%
+	// Listado de CATEGORIAS en la tabla
 	List<Item> itemList = null;
 	try {
 		itemList = daoItem.getItems(categoryId);
@@ -77,9 +76,8 @@
 			</tr>
 		
 		<%
-				
-	 	
-					for(Item item : itemList) {%>
+				for(Item item : itemList) {
+		%>
 			<tr>
 				<td><%=daoCategory.getCategory(categoryId).getName() %></td>
 				<td><%=item.getAmount()%></td>
