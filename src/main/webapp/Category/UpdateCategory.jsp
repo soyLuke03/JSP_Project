@@ -19,7 +19,7 @@
     	    String userSession = (String) session.getAttribute("usuario");
         	
         	if(isSession == null && userSession == null){
-        		response.sendRedirect("error.jsp?msg=Return to the login please");
+        		response.sendRedirect("../error.jsp?msg=Return to the login please");
         	}
         	
         	String CId = request.getParameter("value");
@@ -35,7 +35,7 @@
 	        	</span>
 	        	<!-- Boton LogOut -->
 			 	<span id="welcome">
-			 		<a href="index.jsp"><button><h4>Log Out</h4></button></a>
+			 		<a href="../index.jsp"><button><h4>Log Out</h4></button></a>
 			 	</span>
 	        <hr color="black" size="5">
 	    </div>

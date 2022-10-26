@@ -7,7 +7,7 @@ String isSession = (String) session.getAttribute("login");
 String userSession = (String) session.getAttribute("usuario");
 
 if (isSession == null && userSession == null) {
-	response.sendRedirect("error.jsp?msg=No tienes permisos, haz login.");
+	response.sendRedirect("../error.jsp?msg=Please, log in");
 }
 
 String categoryId = request.getParameter("value");
@@ -31,10 +31,13 @@ Category auxCategory = daoCategory.getCategory(categoryId);
 					Sesion:
 					<%=userSession%></h4>
 			</button>
-		</span> <span id="welcome"> <a href="../index.jsp"><button>
+		</span> 
+		<span id="welcome"> 
+			<a href="../index.jsp">
+			<button>
 					<h4>Log Out</h4>
 			</button>
-		</a>
+			</a>
 	</span>
 		<hr color="black" size="5">
 	</div>
