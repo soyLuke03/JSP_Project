@@ -2,7 +2,7 @@
 
 <%
 	String usuario = request.getParameter("user");
-   	String password = request.getParameter("password");
+   	String password = request.getParameter("password");	
    	
    	
     if(usuario !=null && password !=null){

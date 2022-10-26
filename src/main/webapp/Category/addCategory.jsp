@@ -12,7 +12,7 @@
     	    String userSession = (String) session.getAttribute("usuario");
         	
         	if(isSession == null && userSession == null){
-        		response.sendRedirect("error.jsp?msg=Return to the login please");
+        		response.sendRedirect("../error.jsp?msg=Return to the login please");
         	}
 
         	
