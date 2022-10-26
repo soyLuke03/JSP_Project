@@ -25,6 +25,7 @@
 <body>
 	<!-- HEADER de las páginas -->
 	<div id="header">
+	<div>
     	<img src="../images/logo.png" width="110px" height="100px" id="logo">
         	<!-- Boton FalsoBoton de Session -->
         	<span id="welcome">
@@ -54,7 +55,7 @@
 
 	<div id="content-table">
 		<caption>
-			<h1>Category list:</h1>
+			<h1 align="center">Category list:</h1>
 		</caption>
 		<table>
 		

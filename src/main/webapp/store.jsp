@@ -62,7 +62,7 @@
 
 	<div id="content-table">
 		<caption>
-			<h1>Enterprises List</h1>
+			<h1 align="center">Enterprise shares List</h1>
 		</caption>
 		<table>
 		
