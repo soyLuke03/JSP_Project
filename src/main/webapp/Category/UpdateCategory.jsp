@@ -13,20 +13,19 @@
 	<body>
 	
 <%
-			//Comprobamos usuario
+	String isSession = (String) session.getAttribute("login");
+	String userSession = (String) session.getAttribute("usuario");
+	String CId = request.getParameter("value");
 
-   		 	String isSession = (String) session.getAttribute("login");
-    	    String userSession = (String) session.getAttribute("usuario");
-        	
-        	if(isSession == null && userSession == null){
-        		response.sendRedirect("../error.jsp?msg=Return to the login please");
-        	}
-        	
-        	String CId = request.getParameter("value");
-        	Category newCategory = daoCategory.getCategory(CId);
+	if(isSession == null && userSession == null) {
+		response.sendRedirect("../error.jsp?error_msg=You must login to access.");
+	} else if(CId == null) {
+		response.sendRedirect("../error.jsp?error_msg=Id cannot be null.");
+	} else {
+		//Comprobamos usuario
+    	Category newCategory = daoCategory.getCategory(CId);%>
 
-%>
-			<!-- HEADER de las páginas -->
+		<!-- HEADER de las páginas -->
 		<div id="header">
 	    	<a href="store.jsp"><img src="../images/logo.png" width="110px" height="100px" id="logo"></a>
 	        	<!-- Boton FalsoBoton de Session -->
@@ -74,8 +73,9 @@
 		</form>
 				<a href="CategoryList.jsp"><button name="Volver">Return to shop</button></a>
 		
-    </div>           
+	</div>           
 		
 	
 	</body>
-</html></html>
+	</html>
+<%}%>

@@ -19,7 +19,7 @@
 			category.addCategory(aux);
 			response.sendRedirect("CategoryList.jsp");
 		} catch(CategoryException e) {
-			response.sendRedirect("addCategory.jsp?msg_error=" + e.getMessage());
+			response.sendRedirect("addCategory.jsp?error_msg=" + e.getMessage());
 		}
 	%>
 

@@ -11,13 +11,21 @@
 </head>
 <body>
 <% 
+	String isSession = (String) session.getAttribute("login");
+	String userSession = (String) session.getAttribute("usuario");
 	String Cname = request.getParameter("CName");
 	String CDescription = request.getParameter("CDescription");
 	String CId = request.getParameter("CId");
 	
-	Category newCat = new Category(CId,Cname,CDescription);
-	daoCategory.updateCategory(newCat);
-	response.sendRedirect("CategoryList.jsp");
+	if(isSession == null && userSession == null) {
+		response.sendRedirect("../error.jsp?error_msg=You must login to access.");
+	} else if(Cname == null || CDescription == null || CId == null) {
+		response.sendRedirect("../error.jsp?error_msg=Parameters cannot be null");
+	} else {
+		Category newCat = new Category(CId,Cname,CDescription);
+		daoCategory.updateCategory(newCat);
+		response.sendRedirect("CategoryList.jsp");
+	}
 %>
 	
 

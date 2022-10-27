@@ -13,6 +13,7 @@ import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
 import org.hibernate.query.Query;
 
 import com.jacaranda.Item.Item;
+import com.jacaranda.Item.ItemException;
 
 public class DaoItem {
 
@@ -43,12 +44,16 @@ public class DaoItem {
 	 * @param entry_date
 	 * @param id
 	 * @return
+	 * @throws ItemException 
 	 * @throws SQLException
 	 * @throws IOException
 	 * @throws ClassNotFoundException
 	 */
-	public void addItem(Item newItem) {
-		boolean added = false;
+	public void addItem(Item newItem) throws ItemException {
+		Item exist = session.get(Item.class, newItem.getId());
+		if(exist != null) {
+			throw new ItemException("The id exist.");
+		}
 		session.getTransaction().begin();
 		// Aqui va la transacci�n a realizar
 		session.save(newItem);

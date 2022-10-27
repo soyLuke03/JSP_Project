@@ -8,8 +8,10 @@ String userSession = (String) session.getAttribute("usuario");
 
 String categoryId = request.getParameter("value");
 
-if((categoryId == null) || (isSession == null && userSession == null)) {
-	response.sendRedirect("../error.jsp?msg=El id es null o no has iniciado sesión");
+if(isSession == null && userSession == null) {
+	response.sendRedirect("../error.jsp?error_msg=You must login to access.");
+} else if(categoryId == null) {
+	response.sendRedirect("../error.jsp?error_msg=Id cannot be null.");
 } else {
 	Category auxCategory = daoCategory.getCategory(categoryId);%>
 	<!DOCTYPE html>
