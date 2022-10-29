@@ -3,11 +3,16 @@
 <%@page import="com.jacaranda.Item.Item"%>
 <jsp:useBean id="daoItem" class="com.jacaranda.Dao.DaoItem"></jsp:useBean>
 <%
+//Recuperamos los parámetros de la sesión
 String isSession = (String) session.getAttribute("login");
 String userSession = (String) session.getAttribute("usuario");
+
+//Recuperamos el id del item y el id de la categoria
 String idItem = request.getParameter("value");
 String categoryId = request.getParameter("categoryId");
 
+/*Controlamos que no se pueda entrar a la pagina sin iniciar sesión
+o en caso de que se borre el id de error*/
 if (isSession == null && userSession == null) {
 	response.sendRedirect("../error.jsp?error_msg=No tienes permisos, haz login.");
 } else if(idItem == null || categoryId == null) {

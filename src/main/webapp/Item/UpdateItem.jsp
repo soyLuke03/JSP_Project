@@ -7,17 +7,19 @@
 <%
 	String isSession = (String) session.getAttribute("login");
 	String userSession = (String) session.getAttribute("usuario");
+	
+	//Recuperamos el id del item y el id de la categoria
 	String idItem = request.getParameter("value");
 	String categoryId = request.getParameter("categoryId");
 	
+	/*Controlamos que no se pueda entrar a la pagina sin iniciar sesión
+	o en caso de que se borre el id de error*/
 	if(isSession == null && userSession == null){
 		response.sendRedirect("../error.jsp?error_msg=You do not have perms, please log in");
 	} else if(idItem == null || categoryId == null) {
 		response.sendRedirect("../error.jsp?error_msg=Id cannot be null.");
 	} else {
 		Item item = daoItem.getItem(idItem);%>
-
-
 
 		<!DOCTYPE html>
 		<html>
@@ -84,6 +86,8 @@
 						
 						<button type="submit">Update me now</button>
 				</form>
+						<!-- Si se quiere volver se le pasa el id de la categoria
+						para poder recuperarla -->
 						<a href="../store.jsp?value=<%=categoryId%>"><button name="Volver">Return to shop</button></a>
 				
 		    </div>     
